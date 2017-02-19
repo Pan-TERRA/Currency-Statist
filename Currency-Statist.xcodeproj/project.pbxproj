@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413A23D61E59DA690097B0BC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23D41E59DA690097B0BC /* Currency.swift */; };
+		413A23D71E59DA690097B0BC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23D51E59DA690097B0BC /* NetworkManager.swift */; };
+		413A23D91E59EA600097B0BC /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23D81E59EA600097B0BC /* DataStorage.swift */; };
+		413A23DC1E59F2EE0097B0BC /* CurrencyPriceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */; };
+		413A23DE1E59F3780097B0BC /* CurrencyPriceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */; };
 		416AFD301E59B45900D2E90C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416AFD2F1E59B45900D2E90C /* AppDelegate.swift */; };
 		416AFD351E59B45900D2E90C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416AFD331E59B45900D2E90C /* Main.storyboard */; };
 		416AFD371E59B45900D2E90C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416AFD361E59B45900D2E90C /* Assets.xcassets */; };
@@ -19,6 +24,11 @@
 
 /* Begin PBXFileReference section */
 		0F7C525F4AC9DA03AC3B23C1 /* Pods-Currency-Statist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency-Statist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Currency-Statist/Pods-Currency-Statist.debug.xcconfig"; sourceTree = "<group>"; };
+		413A23D41E59DA690097B0BC /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		413A23D51E59DA690097B0BC /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		413A23D81E59EA600097B0BC /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPriceEntry.swift; sourceTree = "<group>"; };
+		413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPriceSet.swift; sourceTree = "<group>"; };
 		416AFD2C1E59B45900D2E90C /* Currency-Statist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency-Statist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		416AFD2F1E59B45900D2E90C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		416AFD341E59B45900D2E90C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,6 +78,17 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		413A23DA1E59F2BF0097B0BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				413A23D81E59EA600097B0BC /* DataStorage.swift */,
+				413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */,
+				413A23D41E59DA690097B0BC /* Currency.swift */,
+				413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		416AFD231E59B45900D2E90C = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +119,8 @@
 		A81A36BD1E59D35C00EDC8CA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				413A23DA1E59F2BF0097B0BC /* Model */,
+				413A23D51E59DA690097B0BC /* NetworkManager.swift */,
 				A81A36BF1E59D38000EDC8CA /* UI */,
 				416AFD2F1E59B45900D2E90C /* AppDelegate.swift */,
 			);
@@ -254,8 +277,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413A23D71E59DA690097B0BC /* NetworkManager.swift in Sources */,
+				413A23D61E59DA690097B0BC /* Currency.swift in Sources */,
+				413A23DE1E59F3780097B0BC /* CurrencyPriceSet.swift in Sources */,
+				413A23D91E59EA600097B0BC /* DataStorage.swift in Sources */,
 				416AFD301E59B45900D2E90C /* AppDelegate.swift in Sources */,
 				A81A36C11E59D3AB00EDC8CA /* CurrenciesPageController.swift in Sources */,
+				413A23DC1E59F2EE0097B0BC /* CurrencyPriceEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
