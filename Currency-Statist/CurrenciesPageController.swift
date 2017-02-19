@@ -1,19 +1,18 @@
 //
-//  CurrencyViewController.swift
+//  CurrenciesPageController.swift
 //  Currency-Statist
 //
-//  Created by Vlad Krut on 19.02.17.
+//  Created by Nick Baidikoff on 2/19/17.
 //  Copyright © 2017 Vlad Krut. All rights reserved.
 //
 
 import UIKit
 
-class CurrencyViewController: UIViewController {
+class CurrenciesPageController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
 }
