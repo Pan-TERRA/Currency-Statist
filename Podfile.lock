@@ -1,18 +1,15 @@
 PODS:
   - Alamofire (4.2.0)
-  - PageController (0.4.0)
   - SwiftyJSON (3.1.3)
 
 DEPENDENCIES:
   - Alamofire
-  - PageController
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
-  PageController: 2147e8a79862908a68015dc89cda3146934f7bc0
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: 612dd48600c4d6e4ac923d986e44aa540fda9ec1
+PODFILE CHECKSUM: 4364e096b16bb14c1b077100bc09721555c2d168
 
 COCOAPODS: 1.1.1
