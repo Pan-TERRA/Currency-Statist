@@ -8,11 +8,20 @@
 
 import UIKit
 
-class CurrenciesPageController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+class CurrenciesPageController: PageController {
+	
+	private let currencyCodes = ["USD", "EUR", "RUR", "CHF", "GBR", "PLZ", "SEK", "XAU", "CAD"]
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+		menuBar.registerClass(CurrencyMenuCell.self)
+		
+		viewControllers = currencyCodes.map { code -> UIViewController in
+			let viewController = SingleCurrencyViewController()
+			viewController.currencyCode = code
+			return viewController
+		}
+	}
 }
