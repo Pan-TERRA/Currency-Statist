@@ -7,19 +7,24 @@
 //
 
 import Foundation
+import Charts
 
 class CurrencyPriceSet {
-    
-    private var prices: [CurrencyPriceEntry] = []
-    
-    subscript(index: Int) -> CurrencyPriceEntry {
-        get {
-            return prices[index]
-        }
-    }
-    
-    func appendWith(priceEntry entry: CurrencyPriceEntry) {
-        prices.append(entry)
-    }
-    
+	open var priceValues: [CurrencyPriceEntry] {
+		get {
+			return prices
+		}
+	}
+	
+	private var prices: [CurrencyPriceEntry] = []
+	
+	subscript(index: Int) -> CurrencyPriceEntry {
+		get {
+			return prices[index]
+		}
+	}
+	
+	func appendWith(priceEntry entry: CurrencyPriceEntry) {
+		prices.append(entry)
+	}
 }
