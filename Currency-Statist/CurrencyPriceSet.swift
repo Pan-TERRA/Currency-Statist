@@ -27,4 +27,8 @@ class CurrencyPriceSet {
 	func appendWith(priceEntry entry: CurrencyPriceEntry) {
 		prices.append(entry)
 	}
+	
+	func sort() {
+		prices.sort { return $0.date < $1.date }
+	}
 }

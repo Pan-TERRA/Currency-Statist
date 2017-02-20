@@ -28,31 +28,20 @@ class SettingsViewController: UIViewController {
 		}
 	}
 	
-	open var loadedStartDate: Date? {
-		didSet {
-			if let loadedStartDate = loadedStartDate {
-				startDatePicker.date = loadedStartDate
-			}
-		}
-	}
-	
-	open var loadedFinishDate: Date? {
-		didSet {
-			if let loadedFinishDate = loadedFinishDate {
-				finishDatePicker.date = loadedFinishDate
-			}
-		}
-	}
+	open var loadedStartDate: Date?
+	open var loadedFinishDate: Date?
 	
 	@IBOutlet weak var startDatePicker: UIDatePicker! {
 		didSet {
 			startDatePicker.maximumDate = Date()
+			startDatePicker.date = loadedStartDate ?? Date()
 		}
 	}
 	
 	@IBOutlet weak var finishDatePicker: UIDatePicker! {
 		didSet {
 			finishDatePicker.maximumDate = Date()
+			finishDatePicker.date = loadedFinishDate ?? Date()
 		}
 	}
 	
