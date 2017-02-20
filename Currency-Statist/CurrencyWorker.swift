@@ -17,7 +17,6 @@ class CurrencyWorker {
 	private let currency = "currency"
 	private let date = "date"
 	private let saleRateNB = "saleRateNB"
-	private let purchaseRateNB = "purchaseRateNB"
 	
 	open func fetchExchangeRates(from firstDate: Date, to lastDate: Date, withCompletionHandler handler:@escaping (([Currency], Error?) -> Void)) {
 		let stringDates = getStringsValue(from: firstDate, to: lastDate)
@@ -51,11 +50,8 @@ class CurrencyWorker {
 							formatter.dateFormat = "dd.mm.yyyy"
 							let date = formatter.date(from: responseJSON[self.date].stringValue)!
 							
-							let purchasePrice = rateJSON[self.purchaseRateNB].doubleValue
 							let salePrice = rateJSON[self.saleRateNB].doubleValue
-							
 							currentCurrency.appendSalePriceWith(priceEntry: CurrencyPriceEntry(date: date, value: salePrice))
-							currentCurrency.appendPurchasePriceWith(priceEntry: CurrencyPriceEntry(date: date, value: purchasePrice))
 						}
 					}
 				case .failure(let error):
@@ -67,6 +63,7 @@ class CurrencyWorker {
 		}
 		
 		fetchGroup.notify(queue: .main) {
+			fetchedCurrencies = fetchedCurrencies.map { $0.sort(); return $0 }
 			handler(fetchedCurrencies, fetchError)
 		}
 	}
