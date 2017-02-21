@@ -22,18 +22,8 @@ class CurrenciesPageController: PageController {
 			}
 		}
 	}
-	
-	fileprivate var startDate: Date? {
-		didSet {
-			updateData()
-		}
-	}
-	
-	fileprivate var finishDate: Date? {
-		didSet {
-			updateData()
-		}
-	}
+    
+    fileprivate var (startDate, finishDate) = (UserDefaults.standard.startDate, UserDefaults.standard.finishDate)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,7 +35,7 @@ class CurrenciesPageController: PageController {
 		navigationController?.navigationBar.isTranslucent = false
 		
 		finishDate = Date()
-		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate!)
+		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate)!
 		
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
@@ -63,20 +53,18 @@ class CurrenciesPageController: PageController {
 		if let identifier = segue.identifier, identifier == toSettingsSegue {
 			let destinationVC = segue.destination as! SettingsViewController
 			destinationVC.delegate = self
-			destinationVC.loadedStartDate = startDate
-			destinationVC.loadedFinishDate = finishDate
 		}
 	}
 	
-	private func updateData() {
-		if let startDate = startDate, let finishDate = finishDate, startDate.compare(finishDate) == .orderedAscending {
+	fileprivate func updateData() {
+		if startDate.compare(finishDate) == .orderedAscending {
             HUD.show(.progress)
 			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
                 HUD.hide()
 				if let error = error {
-//					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-//					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//					self.present(alert, animated: true, completion: nil)
+					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+					self.present(alert, animated: true, completion: nil)
                      HUD.flash(.error, delay: 1.0)
 				} else {
 					self.currencies = currency
@@ -88,11 +76,10 @@ class CurrenciesPageController: PageController {
 }
 
 extension CurrenciesPageController: SettingsUpdateDelegate {
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) {
-		self.startDate = startDate
-	}
-	
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) {
-		self.finishDate = finishDate
-	}
+    
+    func settingsViewController(_ viewController: SettingsViewController, didUpdateDates: (startDate: Date, finishDate: Date)) {
+        self.startDate = didUpdateDates.startDate
+        self.finishDate = didUpdateDates.finishDate
+        updateData()
+    }
 }

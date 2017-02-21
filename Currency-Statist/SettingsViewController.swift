@@ -9,39 +9,53 @@
 import UIKit
 
 protocol SettingsUpdateDelegate {
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) -> Void
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) -> Void
+    func settingsViewController(_ viewController: SettingsViewController, didUpdateDates: (startDate: Date, finishDate: Date)) -> Void
 }
 
 class SettingsViewController: UIViewController {
 	open var delegate: SettingsUpdateDelegate?
 	
-	private var startDate: Date? {
+	private var startDate: Date = Date() {
 		didSet {
-			delegate?.settingsViewController(self, didUpdateStartDate: startDate)
+			needReloadData = true
 		}
 	}
 	
-	private var finishDate: Date? {
+	private var finishDate: Date = Date() {
 		didSet {
-			delegate?.settingsViewController(self, didUpdateFinishDate: finishDate)
+			needReloadData = true
 		}
 	}
-	
-	open var loadedStartDate: Date?
-	open var loadedFinishDate: Date?
+    
+    private var needReloadData = false
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if needReloadData {
+            delegate?.settingsViewController(self, didUpdateDates: (startDate, finishDate))
+            UserDefaults.standard.startDate = startDate
+            UserDefaults.standard.finishDate = finishDate
+            needReloadData = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        startDatePicker.date = UserDefaults.standard.startDate
+        finishDatePicker.date = UserDefaults.standard.finishDate
+    }
 	
 	@IBOutlet weak var startDatePicker: UIDatePicker! {
 		didSet {
 			startDatePicker.maximumDate = Date()
-			startDatePicker.date = loadedStartDate ?? Date()
 		}
 	}
 	
 	@IBOutlet weak var finishDatePicker: UIDatePicker! {
 		didSet {
 			finishDatePicker.maximumDate = Date()
-			finishDatePicker.date = loadedFinishDate ?? Date()
 		}
 	}
 	
