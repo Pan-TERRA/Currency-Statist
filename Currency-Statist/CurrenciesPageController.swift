@@ -37,15 +37,18 @@ class CurrenciesPageController: PageController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		navigationController?.navigationBar.barTintColor = .flatOrange
-		navigationController?.navigationBar.tintColor = .flatWhite
 		navigationController?.hidesNavigationBarHairline = true
+		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatWhite]
+		navigationController?.navigationBar.tintColor = .flatWhite
+		navigationController?.navigationBar.barTintColor = .flatOrange
+		navigationController?.navigationBar.isTranslucent = false
 		
 		finishDate = Date()
 		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate!)
 		
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
+		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 44.0)
 		
 		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
 	}
