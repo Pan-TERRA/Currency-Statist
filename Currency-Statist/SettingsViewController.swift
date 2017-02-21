@@ -15,13 +15,13 @@ protocol SettingsUpdateDelegate {
 class SettingsViewController: UIViewController {
 	open var delegate: SettingsUpdateDelegate?
 	
-	private var startDate: Date = Date() {
+	private var startDate: Date = UserDefaults.standard.startDate {
 		didSet {
 			needReloadData = true
 		}
 	}
 	
-	private var finishDate: Date = Date() {
+	private var finishDate: Date = UserDefaults.standard.finishDate {
 		didSet {
 			needReloadData = true
 		}
