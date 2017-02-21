@@ -47,7 +47,7 @@ class SingleCurrencyViewController: UIViewController {
 			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 		}
 	}
-	
+
 	init(type: CurrencyType) {
 		super.init(nibName: nil, bundle: nil)
 		self.type = type
@@ -62,8 +62,8 @@ class SingleCurrencyViewController: UIViewController {
 		super.viewDidLoad()
 		
 		var frame = view.bounds
-		frame.origin = CGPoint(x: 0.0, y: 108.0)
-		frame.size.height -= 108.0
+		frame.origin = CGPoint(x: 0.0, y: 40.0)
+		frame.size.height -= 40.0
 		currencyPriceChart = LineChartView(frame: frame)
 		
 		if let currencyPriceChart = currencyPriceChart {

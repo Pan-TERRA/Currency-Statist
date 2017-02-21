@@ -13,7 +13,7 @@ class CurrencyMenuCell: MenuCell {
 	
 	required init(frame: CGRect) {
 		super.init(frame: frame)
-		contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 1, right: 20)
+		contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
