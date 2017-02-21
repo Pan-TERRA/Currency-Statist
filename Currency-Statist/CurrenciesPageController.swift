@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import PKHUD
 
 class CurrenciesPageController: PageController {
 	fileprivate let worker = CurrencyWorker()
@@ -69,13 +70,17 @@ class CurrenciesPageController: PageController {
 	
 	private func updateData() {
 		if let startDate = startDate, let finishDate = finishDate, startDate.compare(finishDate) == .orderedAscending {
+            HUD.show(.progress)
 			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
+                HUD.hide()
 				if let error = error {
-					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-					self.present(alert, animated: true, completion: nil)
+//					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+//					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//					self.present(alert, animated: true, completion: nil)
+                     HUD.flash(.error, delay: 1.0)
 				} else {
 					self.currencies = currency
+                    HUD.flash(.success, delay: 1.0)
 				}
 			}
 		}
