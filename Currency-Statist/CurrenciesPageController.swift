@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class CurrenciesPageController: PageController {
 	fileprivate let worker = CurrencyWorker()
@@ -35,6 +36,10 @@ class CurrenciesPageController: PageController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		navigationController?.navigationBar.barTintColor = .flatOrange
+		navigationController?.navigationBar.tintColor = .flatWhite
+		navigationController?.hidesNavigationBarHairline = true
 		
 		finishDate = Date()
 		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate!)
