@@ -39,12 +39,12 @@ class CurrenciesPageController: PageController {
 		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 44.0)
 		
 		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
-	}
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
+        scrollView.isPagingEnabled = false
+        scrollView.isScrollEnabled = false
+        
         updateData()
-    }
+	}
 	
 	@IBAction func onSettingsButtonTap(_ sender: UIBarButtonItem) {
 		performSegue(withIdentifier: toSettingsSegue, sender: self)
