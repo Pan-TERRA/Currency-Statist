@@ -227,7 +227,7 @@
 				TargetAttributes = {
 					416AFD2B1E59B45900D2E90C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 76LJ97E96C;
+						DevelopmentTeam = YD97N8TEJN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -457,7 +457,7 @@
 			baseConfigurationReference = 0F7C525F4AC9DA03AC3B23C1 /* Pods-Currency-Statist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76LJ97E96C;
+				DEVELOPMENT_TEAM = YD97N8TEJN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",
@@ -475,7 +475,7 @@
 			baseConfigurationReference = B966DBC5DC2D9B00B258D922 /* Pods-Currency-Statist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76LJ97E96C;
+				DEVELOPMENT_TEAM = YD97N8TEJN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",
