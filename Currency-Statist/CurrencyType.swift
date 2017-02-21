@@ -20,14 +20,14 @@ enum CurrencyType : String {
 	
 	var description: String {
 		switch self {
-		case .usd: return "Доллар США"
-		case .eur: return "Евро"
-		case .rub: return "Российский рубль"
-		case .chf: return "Швейцарский франк"
-		case .gbp: return "Британский фунт"
-		case .plz: return "Польский злотый"
-		case .sek: return "Шведская крона"
-		case .cad: return "Канадский доллар"
+		case .usd: return "United States Dollar"
+		case .eur: return "Euro"
+		case .rub: return "Russian Rubble"
+		case .chf: return "Swiss Franc"
+		case .gbp: return "British Pound"
+		case .plz: return "Polish Zloty"
+		case .sek: return "Swedish Krona"
+		case .cad: return "Canadian Dollar"
 		}
 	}
 	

@@ -33,11 +33,9 @@ class CurrenciesPageController: PageController {
 		}
 	}
 	
-	private let toSettingsSegue = "toSettingsSegue"
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-				
+		
 		finishDate = Date()
 		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate!)
 		
@@ -51,6 +49,7 @@ class CurrenciesPageController: PageController {
 		performSegue(withIdentifier: toSettingsSegue, sender: self)
 	}
 	
+	private let toSettingsSegue = "toSettingsSegue"
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let identifier = segue.identifier, identifier == toSettingsSegue {
 			let destinationVC = segue.destination as! SettingsViewController
@@ -62,7 +61,7 @@ class CurrenciesPageController: PageController {
 	
 	private func updateData() {
 		if let startDate = startDate, let finishDate = finishDate, startDate.compare(finishDate) == .orderedAscending {
-			worker.fetchExchangeRates(from: startDate, to: finishDate) {currency, error in
+			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
 				if let error = error {
 					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

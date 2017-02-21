@@ -10,12 +10,7 @@ import UIKit
 import Charts
 
 class SingleCurrencyViewController: UIViewController {
-	open var type: CurrencyType? {
-		didSet {
-			title = type?.description
-		}
-	}
-		
+	open var type: CurrencyType?
 	open var currency: Currency? {
 		didSet {
 			setupDataForChart()
@@ -26,6 +21,8 @@ class SingleCurrencyViewController: UIViewController {
 		didSet {
 			currencyPriceChart?.setViewPortOffsets(left: 0.0, top: 1.0, right: 0.0, bottom: 0.0)
 			currencyPriceChart?.borderColor = .black
+			currencyPriceChart?.borderLineWidth = 2.0
+			currencyPriceChart?.drawBordersEnabled = true
 			currencyPriceChart?.backgroundColor = .white
 			currencyPriceChart?.gridBackgroundColor = .white
 			currencyPriceChart?.chartDescription?.enabled = false
@@ -50,13 +47,14 @@ class SingleCurrencyViewController: UIViewController {
 			xAsis?.drawGridLinesEnabled = true
 			xAsis?.axisLineColor = .white
 			
-			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 		}
 	}
 	
 	init(type: CurrencyType) {
 		super.init(nibName: nil, bundle: nil)
 		self.type = type
+		self.title = type.description
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -85,6 +83,7 @@ class SingleCurrencyViewController: UIViewController {
 			sellDataSet.circleColors = [.orange]
 			sellDataSet.circleHoleColor = .orange
 			sellDataSet.circleRadius = 4.0
+			sellDataSet.fillColor = .orange
 			sellDataSet.mode = .cubicBezier
 			sellDataSet.drawFilledEnabled = true
 			

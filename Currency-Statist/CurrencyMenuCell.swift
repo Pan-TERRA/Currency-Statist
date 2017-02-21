@@ -25,4 +25,3 @@ class CurrencyMenuCell: MenuCell {
 		titleLabel.textColor = selected ? .black : .lightGray
 	}
 }
-
