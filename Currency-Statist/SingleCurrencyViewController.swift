@@ -10,12 +10,12 @@ import UIKit
 import Charts
 
 class SingleCurrencyViewController: UIViewController {
-	open var currencyCode: String? {
+	open var type: CurrencyType? {
 		didSet {
-			self.title = currencyCode
+			title = type?.description
 		}
 	}
-	
+		
 	open var currency: Currency? {
 		didSet {
 			setupDataForChart()
@@ -24,9 +24,10 @@ class SingleCurrencyViewController: UIViewController {
 	
 	open var currencyPriceChart: LineChartView? {
 		didSet {
-			currencyPriceChart?.setViewPortOffsets(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0)
+			currencyPriceChart?.setViewPortOffsets(left: 0.0, top: 1.0, right: 0.0, bottom: 0.0)
+			currencyPriceChart?.borderColor = .black
 			currencyPriceChart?.backgroundColor = .white
-			currencyPriceChart?.tintColor = .white
+			currencyPriceChart?.gridBackgroundColor = .white
 			currencyPriceChart?.chartDescription?.enabled = false
 			currencyPriceChart?.dragEnabled = true
 			currencyPriceChart?.setScaleEnabled(true)
@@ -53,12 +54,21 @@ class SingleCurrencyViewController: UIViewController {
 		}
 	}
 	
+	init(type: CurrencyType) {
+		super.init(nibName: nil, bundle: nil)
+		self.type = type
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		var frame = view.bounds
-		frame.origin = CGPoint(x: 0.0, y: 120.0)
-		frame.size.height -= 120.0
+		frame.origin = CGPoint(x: 0.0, y: 110.0)
+		frame.size.height -= 110.0
 		currencyPriceChart = LineChartView(frame: frame)
 		
 		if let currencyPriceChart = currencyPriceChart {

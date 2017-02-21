@@ -15,7 +15,7 @@ class CurrenciesPageController: PageController {
 		didSet {
 			let _ = viewControllers.map { viewController  -> SingleCurrencyViewController in
 				let singleCurrencyVC = viewController as! SingleCurrencyViewController
-				singleCurrencyVC.currency = currencies?.filter { $0.type == CurrencyType(rawValue: singleCurrencyVC.currencyCode!) }.first
+				singleCurrencyVC.currency = currencies?.filter { $0.type == singleCurrencyVC.type }.first
 				return singleCurrencyVC
 			}
 		}
@@ -44,11 +44,7 @@ class CurrenciesPageController: PageController {
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
 		
-		viewControllers = CurrencyType.values.map { code -> UIViewController in
-			let viewController = SingleCurrencyViewController()
-			viewController.currencyCode = code
-			return viewController
-		}
+		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
 	}
 	
 	@IBAction func onSettingsButtonTap(_ sender: UIBarButtonItem) {

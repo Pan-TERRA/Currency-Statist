@@ -31,6 +31,5 @@ enum CurrencyType : String {
 		}
 	}
 	
-	static let values = ["USD", "EUR", "RUB", "CHF", "GBP", "PLZ", "SEK", "CAD"]
-	static let codes = ["Доллар США", "Евро", "Российский рубль", "Швейцарский франк", "Британский фунт", "Польский злотый", "Шведская крона", "Канадский доллар"]
+	static let types: [CurrencyType] = [.usd, .eur, .rub, .chf, .gbp, .plz, .sek, .cad]
 }
