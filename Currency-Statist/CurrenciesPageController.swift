@@ -34,15 +34,17 @@ class CurrenciesPageController: PageController {
 		navigationController?.navigationBar.barTintColor = .flatOrange
 		navigationController?.navigationBar.isTranslucent = false
 		
-		finishDate = Date()
-		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate)!
-		
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
 		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 44.0)
 		
 		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
 	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateData()
+    }
 	
 	@IBAction func onSettingsButtonTap(_ sender: UIBarButtonItem) {
 		performSegue(withIdentifier: toSettingsSegue, sender: self)
