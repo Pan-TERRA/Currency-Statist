@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.2.0)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
@@ -7,14 +10,25 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Charts
   - SwiftyJSON
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: dcf98f9bf3a632a7f40679b7da46f09681e48526
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: 88c2a14aeb2bcb56fcc166180b3e8f7117eda55c
+PODFILE CHECKSUM: bf208f166b0fecbb0c51e823ea93c63b5e491ba1
 
 COCOAPODS: 1.1.1

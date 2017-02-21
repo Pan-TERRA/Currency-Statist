@@ -25,7 +25,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Currency Statist" id="bUL-cI-iUz">
                         <barButtonItem key="leftBarButtonItem" image="settingsIcon" id="saC-iO-wbB">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="onSettingsButtonTap:" destination="cjj-A5-OeJ" id="P7f-cB-C5S"/>
                             </connections>

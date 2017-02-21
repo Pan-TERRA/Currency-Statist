@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class CurrenciesPageController: PageController {
 	fileprivate let worker = CurrencyWorker()
@@ -15,7 +16,7 @@ class CurrenciesPageController: PageController {
 		didSet {
 			let _ = viewControllers.map { viewController  -> SingleCurrencyViewController in
 				let singleCurrencyVC = viewController as! SingleCurrencyViewController
-				singleCurrencyVC.currency = currencies?.filter { $0.type == CurrencyType(rawValue: singleCurrencyVC.currencyCode!) }.first
+				singleCurrencyVC.currency = currencies?.filter { $0.type == singleCurrencyVC.type }.first
 				return singleCurrencyVC
 			}
 		}
@@ -33,28 +34,30 @@ class CurrenciesPageController: PageController {
 		}
 	}
 	
-	private let toSettingsSegue = "toSettingsSegue"
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-				
+		
+		navigationController?.hidesNavigationBarHairline = true
+		navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatWhite]
+		navigationController?.navigationBar.tintColor = .flatWhite
+		navigationController?.navigationBar.barTintColor = .flatOrange
+		navigationController?.navigationBar.isTranslucent = false
+		
 		finishDate = Date()
 		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate!)
 		
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
+		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 44.0)
 		
-		viewControllers = CurrencyType.values.map { code -> UIViewController in
-			let viewController = SingleCurrencyViewController()
-			viewController.currencyCode = code
-			return viewController
-		}
+		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
 	}
 	
 	@IBAction func onSettingsButtonTap(_ sender: UIBarButtonItem) {
 		performSegue(withIdentifier: toSettingsSegue, sender: self)
 	}
 	
+	private let toSettingsSegue = "toSettingsSegue"
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let identifier = segue.identifier, identifier == toSettingsSegue {
 			let destinationVC = segue.destination as! SettingsViewController
@@ -66,7 +69,7 @@ class CurrenciesPageController: PageController {
 	
 	private func updateData() {
 		if let startDate = startDate, let finishDate = finishDate, startDate.compare(finishDate) == .orderedAscending {
-			worker.fetchExchangeRates(from: startDate, to: finishDate) {currency, error in
+			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
 				if let error = error {
 					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
