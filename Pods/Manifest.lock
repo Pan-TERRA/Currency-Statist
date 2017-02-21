@@ -6,12 +6,14 @@ PODS:
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
+  - PKHUD (4.2.0)
   - SwiftyJSON (3.1.3)
 
 DEPENDENCIES:
   - Alamofire
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Charts
+  - PKHUD (~> 4.0)
   - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -27,8 +29,9 @@ SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  PKHUD: 48af884cf00c2213b0313b739d914e6cab1c0f5e
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: bf208f166b0fecbb0c51e823ea93c63b5e491ba1
+PODFILE CHECKSUM: 230e7e338fa9b46756333da11c8ff15d5dbe4af7
 
 COCOAPODS: 1.2.0
