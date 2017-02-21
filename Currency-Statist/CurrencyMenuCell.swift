@@ -22,7 +22,7 @@ class CurrencyMenuCell: MenuCell {
 	
 	override func updateData() {
 		super.updateData()
-		titleLabel.textColor = selected ? .black : .lightGray
+		backgroundColor = .flatOrange
+		titleLabel.textColor = selected ? .flatWhite : .flatWhiteDark
 	}
 }
-

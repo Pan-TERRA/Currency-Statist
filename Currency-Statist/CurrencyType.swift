@@ -20,17 +20,16 @@ enum CurrencyType : String {
 	
 	var description: String {
 		switch self {
-		case .usd: return "Доллар США"
-		case .eur: return "Евро"
-		case .rub: return "Российский рубль"
-		case .chf: return "Швейцарский франк"
-		case .gbp: return "Британский фунт"
-		case .plz: return "Польский злотый"
-		case .sek: return "Шведская крона"
-		case .cad: return "Канадский доллар"
+		case .usd: return "United States Dollar"
+		case .eur: return "Euro"
+		case .rub: return "Russian Rubble"
+		case .chf: return "Swiss Franc"
+		case .gbp: return "British Pound"
+		case .plz: return "Polish Zloty"
+		case .sek: return "Swedish Krona"
+		case .cad: return "Canadian Dollar"
 		}
 	}
 	
-	static let values = ["USD", "EUR", "RUB", "CHF", "GBP", "PLZ", "SEK", "CAD"]
-	static let codes = ["Доллар США", "Евро", "Российский рубль", "Швейцарский франк", "Британский фунт", "Польский злотый", "Шведская крона", "Канадский доллар"]
+	static let types: [CurrencyType] = [.usd, .eur, .rub, .chf, .gbp, .plz, .sek, .cad]
 }

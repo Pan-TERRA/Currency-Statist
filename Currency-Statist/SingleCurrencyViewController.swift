@@ -10,12 +10,7 @@ import UIKit
 import Charts
 
 class SingleCurrencyViewController: UIViewController {
-	open var currencyCode: String? {
-		didSet {
-			self.title = currencyCode
-		}
-	}
-	
+	open var type: CurrencyType?
 	open var currency: Currency? {
 		didSet {
 			setupDataForChart()
@@ -25,8 +20,8 @@ class SingleCurrencyViewController: UIViewController {
 	open var currencyPriceChart: LineChartView? {
 		didSet {
 			currencyPriceChart?.setViewPortOffsets(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0)
-			currencyPriceChart?.backgroundColor = .white
-			currencyPriceChart?.tintColor = .white
+			currencyPriceChart?.backgroundColor = .flatWhite
+			currencyPriceChart?.gridBackgroundColor = .flatWhite
 			currencyPriceChart?.chartDescription?.enabled = false
 			currencyPriceChart?.dragEnabled = true
 			currencyPriceChart?.setScaleEnabled(true)
@@ -36,29 +31,39 @@ class SingleCurrencyViewController: UIViewController {
 			let yAxis = currencyPriceChart?.leftAxis
 			yAxis?.labelFont = UIFont(name: "HelveticaNeue-Light", size: 12.0) ?? .preferredFont(forTextStyle: .body)
 			yAxis?.setLabelCount(6, force: false)
-			yAxis?.labelTextColor = .black
+			yAxis?.labelTextColor = .flatBlack
 			yAxis?.labelPosition = .insideChart
 			yAxis?.drawGridLinesEnabled = true
-			yAxis?.axisLineColor = .white
+			yAxis?.axisLineColor = .flatWhite
 			
 			let xAsis = currencyPriceChart?.xAxis
 			xAsis?.labelFont = UIFont(name: "HelveticaNeue-Light", size: 12.0) ?? .preferredFont(forTextStyle: .body)
 			xAsis?.setLabelCount(4, force: false)
-			xAsis?.labelTextColor = .black
+			xAsis?.labelTextColor = .flatBlack
 			xAsis?.labelPosition = .top
 			xAsis?.drawGridLinesEnabled = true
-			xAsis?.axisLineColor = .white
+			xAsis?.axisLineColor = .flatWhite
 			
-			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 		}
+	}
+	
+	init(type: CurrencyType) {
+		super.init(nibName: nil, bundle: nil)
+		self.type = type
+		self.title = type.description
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		var frame = view.bounds
-		frame.origin = CGPoint(x: 0.0, y: 120.0)
-		frame.size.height -= 120.0
+		frame.origin = CGPoint(x: 0.0, y: 108.0)
+		frame.size.height -= 108.0
 		currencyPriceChart = LineChartView(frame: frame)
 		
 		if let currencyPriceChart = currencyPriceChart {
@@ -71,10 +76,11 @@ class SingleCurrencyViewController: UIViewController {
 		if let currency = currency {
 			let sellValues = currency.salePriceSet.priceValues.map { return ChartDataEntry(x: $0.date.timeIntervalSince1970, y:$0.value)}
 			let sellDataSet = LineChartDataSet(values: sellValues, label: "Sale price")
-			sellDataSet.colors = [.orange]
-			sellDataSet.circleColors = [.orange]
-			sellDataSet.circleHoleColor = .orange
+			sellDataSet.colors = [.flatOrange]
+			sellDataSet.circleColors = [.flatOrange]
+			sellDataSet.circleHoleColor = .flatOrange
 			sellDataSet.circleRadius = 4.0
+			sellDataSet.fillColor = .flatOrange
 			sellDataSet.mode = .cubicBezier
 			sellDataSet.drawFilledEnabled = true
 			
