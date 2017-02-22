@@ -14,17 +14,9 @@ import PKHUD
 class CurrenciesPageController: PageController {
 	fileprivate let worker = CurrencyWorker()
 	
-	fileprivate var startDate: Date? {
-		didSet {
-			updateData()
-		}
-	}
-	
-	fileprivate var finishDate: Date? {
-		didSet {
-			updateData()
-		}
-	}
+	fileprivate var startDate: Date?
+	fileprivate var finishDate: Date?
+	fileprivate var isDateChanged = false
 	
 	fileprivate var currencies: [Currency]? {
 		didSet {
@@ -63,6 +55,15 @@ class CurrenciesPageController: PageController {
 		updateData()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if isDateChanged {
+			updateData()
+			isDateChanged = false
+		}
+	}
+	
 	@IBAction func onSettingsButtonTap(_ sender: UIBarButtonItem) {
 		performSegue(withIdentifier: toSettingsSegue, sender: self)
 	}
@@ -78,7 +79,7 @@ class CurrenciesPageController: PageController {
 	}
 	
 	fileprivate func updateData() {
-		if startDate.compare(finishDate) == .orderedAscending {
+		if let startDate = startDate, let finishDate = finishDate, startDate.isLess(than: finishDate) {
 			HUD.show(.progress)
 			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
 				HUD.hide()
@@ -98,12 +99,22 @@ class CurrenciesPageController: PageController {
 
 extension CurrenciesPageController: SettingsUpdateDelegate {
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) {
-		Defaults[.startDate] = startDate
-		self.startDate = startDate
+		if let current = self.startDate, let startDate = startDate {
+			if !current.isEqual(to: startDate) {
+				Defaults[.startDate] = startDate
+				self.startDate = startDate
+				self.isDateChanged = true
+			}
+		}
 	}
 	
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) {
-		Defaults[.finishDate] = finishDate
-		self.finishDate = finishDate
+		if let current = self.finishDate, let finishDate = finishDate {
+			if !current.isEqual(to: finishDate) {
+				Defaults[.finishDate] = finishDate
+				self.finishDate = finishDate
+				self.isDateChanged = true
+			}
+		}
 	}
 }

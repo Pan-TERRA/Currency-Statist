@@ -30,6 +30,8 @@
 		A81A36EA1E59F17000EDC8CA /* CurrencyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A36E91E59F17000EDC8CA /* CurrencyMenuCell.swift */; };
 		A81A36EC1E5A0F8500EDC8CA /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A36EB1E5A0F8500EDC8CA /* CurrencyType.swift */; };
 		A81A36EE1E5A1B2B00EDC8CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A36ED1E5A1B2B00EDC8CA /* SettingsViewController.swift */; };
+		A84538A11E5DA5AA00187362 /* ChameleonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */; };
+		A84538A21E5DA5AA00187362 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */; };
 		A87571EA1E5CA6D30079EE7E /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87571E91E5CA6D30079EE7E /* DateTimePickerViewController.m */; };
 		A8D619F01E5D6D31003472EC /* DateTimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D619EF1E5D6D31003472EC /* DateTimePickerView.xib */; };
 		A8D619F31E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */; };
@@ -65,6 +67,8 @@
 		A81A36E91E59F17000EDC8CA /* CurrencyMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyMenuCell.swift; sourceTree = "<group>"; };
 		A81A36EB1E5A0F8500EDC8CA /* CurrencyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		A81A36ED1E5A1B2B00EDC8CA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/Currency-Statist-flqsxkihvmjwniecfdlbnclykkqu/Build/Products/Debug-iphoneos/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
+		A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../Library/Developer/Xcode/DerivedData/Currency-Statist-flqsxkihvmjwniecfdlbnclykkqu/Build/Products/Debug-iphoneos/SwiftyUserDefaults/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
 		A87571E71E5CA6D20079EE7E /* Currency-Statist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Currency-Statist-Bridging-Header.h"; sourceTree = "<group>"; };
 		A87571E81E5CA6D30079EE7E /* DateTimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerViewController.h; sourceTree = "<group>"; };
 		A87571E91E5CA6D30079EE7E /* DateTimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerViewController.m; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84538A11E5DA5AA00187362 /* ChameleonFramework.framework in Frameworks */,
+				A84538A21E5DA5AA00187362 /* SwiftyUserDefaults.framework in Frameworks */,
 				4141CF1A1E5CA98A0032D7EA /* PKHUD.framework in Frameworks */,
 				A81A36E81E59DF8A00EDC8CA /* Charts.framework in Frameworks */,
 				A81A36CF1E59D4DD00EDC8CA /* SwiftyJSON.framework in Frameworks */,
@@ -94,6 +100,8 @@
 		3DB8D4721CE0DCC1FF84BEB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */,
+				A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */,
 				4141CF191E5CA98A0032D7EA /* PKHUD.framework */,
 				A81A36E71E59DF8A00EDC8CA /* Charts.framework */,
 				A81A36C21E59D3E800EDC8CA /* Alamofire.framework */,

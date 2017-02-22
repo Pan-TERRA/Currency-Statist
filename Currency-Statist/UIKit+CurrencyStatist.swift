@@ -9,11 +9,15 @@
 import Foundation
 
 extension Date {
-	func isGreater(thanDate dateToCompare: Date) -> Bool {
+	func isGreater(than dateToCompare: Date) -> Bool {
 		return self.compare(dateToCompare) == .orderedDescending
 	}
 	
-	func isLess(thanDate dateToCompare: Date) -> Bool {
+	func isLess(than dateToCompare: Date) -> Bool {
 		return self.compare(dateToCompare) == .orderedAscending
+	}
+	
+	func isEqual(to dateToCompare: Date) -> Bool {
+		return self.compare(dateToCompare) == .orderedSame
 	}
 }

@@ -20,7 +20,7 @@ class SettingsViewController: UITableViewController {
 	
 	open var startDate: Date? {
 		didSet {
-			if let startDate = startDate, startDate.isLess(thanDate: finishDate ?? Date()) {
+			if let startDate = startDate, startDate.isLess(than: finishDate ?? Date()) {
 				delegate?.settingsViewController(self, didUpdateStartDate: startDate)
 			}
 		}
@@ -28,7 +28,7 @@ class SettingsViewController: UITableViewController {
 	
 	open var finishDate: Date? {
 		didSet {
-			if let finishDate = finishDate, finishDate.isGreater(thanDate: startDate ?? Date()) {
+			if let finishDate = finishDate, finishDate.isGreater(than: startDate ?? Date()) {
 				delegate?.settingsViewController(self, didUpdateFinishDate: finishDate)
 			}
 		}
