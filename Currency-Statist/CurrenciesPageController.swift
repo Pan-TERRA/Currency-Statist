@@ -9,19 +9,10 @@
 import UIKit
 import ChameleonFramework
 import SwiftyUserDefaults
+import PKHUD
 
 class CurrenciesPageController: PageController {
 	fileprivate let worker = CurrencyWorker()
-	
-	fileprivate var currencies: [Currency]? {
-		didSet {
-			let _ = viewControllers.map { viewController  -> SingleCurrencyViewController in
-				let singleCurrencyVC = viewController as! SingleCurrencyViewController
-				singleCurrencyVC.currency = currencies?.filter { $0.type == singleCurrencyVC.type }.first
-				return singleCurrencyVC
-			}
-		}
-	}
 	
 	fileprivate var startDate: Date? {
 		didSet {
@@ -32,6 +23,16 @@ class CurrenciesPageController: PageController {
 	fileprivate var finishDate: Date? {
 		didSet {
 			updateData()
+		}
+	}
+	
+	fileprivate var currencies: [Currency]? {
+		didSet {
+			let _ = viewControllers.map { viewController  -> SingleCurrencyViewController in
+				let singleCurrencyVC = viewController as! SingleCurrencyViewController
+				singleCurrencyVC.currency = currencies?.filter { $0.type == singleCurrencyVC.type }.first
+				return singleCurrencyVC
+			}
 		}
 	}
 	
@@ -53,8 +54,13 @@ class CurrenciesPageController: PageController {
 		
 		scrollView.isPagingEnabled = false
 		scrollView.isScrollEnabled = false
-
+		
 		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
+		
+		scrollView.isPagingEnabled = false
+		scrollView.isScrollEnabled = false
+		
+		updateData()
 	}
 	
 	@IBAction func onSettingsButtonTap(_ sender: UIBarButtonItem) {
@@ -71,15 +77,19 @@ class CurrenciesPageController: PageController {
 		}
 	}
 	
-	private func updateData() {
-		if let startDate = startDate, let finishDate = finishDate, startDate.compare(finishDate) == .orderedAscending {
+	fileprivate func updateData() {
+		if startDate.compare(finishDate) == .orderedAscending {
+			HUD.show(.progress)
 			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
+				HUD.hide()
 				if let error = error {
 					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 					self.present(alert, animated: true, completion: nil)
+					HUD.flash(.error, delay: 1.0)
 				} else {
 					self.currencies = currency
+					HUD.flash(.success, delay: 1.0)
 				}
 			}
 		}

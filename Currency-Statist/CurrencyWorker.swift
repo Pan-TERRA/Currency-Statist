@@ -47,7 +47,7 @@ class CurrencyWorker {
 							}
 							
 							let formatter = DateFormatter()
-							formatter.dateFormat = "dd.mm.yyyy"
+							formatter.dateFormat = "dd.MM.yyyy"
 							let date = formatter.date(from: responseJSON[self.date].stringValue)!
 							
 							let salePrice = rateJSON[self.saleRateNB].doubleValue
@@ -82,7 +82,7 @@ class CurrencyWorker {
 		}
 		
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "dd.mm.yyyy"
+		dateFormatter.dateFormat = "dd.MM.yyyy"
 		
 		return dates.map { dateFormatter.string(from: $0) }
 		

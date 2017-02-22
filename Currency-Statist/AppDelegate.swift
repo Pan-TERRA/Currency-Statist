@@ -9,11 +9,6 @@
 import UIKit
 import SwiftyUserDefaults
 
-// TODO: 
-// 1. Нужна анимация на время, которое занимает прогрузка данных, чекни на гитхабе что-то красивенькое (по запросу progress hud вроде)
-// 5. Тестить, тестить и ещё раз тестить
-//
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {	
 	var window: UIWindow?

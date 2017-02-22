@@ -11,6 +11,7 @@
 		413A23D71E59DA690097B0BC /* CurrencyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23D51E59DA690097B0BC /* CurrencyWorker.swift */; };
 		413A23DC1E59F2EE0097B0BC /* CurrencyPriceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */; };
 		413A23DE1E59F3780097B0BC /* CurrencyPriceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */; };
+		4141CF1A1E5CA98A0032D7EA /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4141CF191E5CA98A0032D7EA /* PKHUD.framework */; };
 		416AFD301E59B45900D2E90C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416AFD2F1E59B45900D2E90C /* AppDelegate.swift */; };
 		416AFD351E59B45900D2E90C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416AFD331E59B45900D2E90C /* Main.storyboard */; };
 		416AFD371E59B45900D2E90C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416AFD361E59B45900D2E90C /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		413A23D51E59DA690097B0BC /* CurrencyWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyWorker.swift; sourceTree = "<group>"; };
 		413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPriceEntry.swift; sourceTree = "<group>"; };
 		413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPriceSet.swift; sourceTree = "<group>"; };
+		4141CF191E5CA98A0032D7EA /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = "Pods/../build/Debug-iphoneos/PKHUD/PKHUD.framework"; sourceTree = "<group>"; };
 		416AFD2C1E59B45900D2E90C /* Currency-Statist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency-Statist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		416AFD2F1E59B45900D2E90C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		416AFD341E59B45900D2E90C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4141CF1A1E5CA98A0032D7EA /* PKHUD.framework in Frameworks */,
 				A81A36E81E59DF8A00EDC8CA /* Charts.framework in Frameworks */,
 				A81A36CF1E59D4DD00EDC8CA /* SwiftyJSON.framework in Frameworks */,
 				A81A36C51E59D3E800EDC8CA /* Alamofire.framework in Frameworks */,
@@ -91,6 +94,7 @@
 		3DB8D4721CE0DCC1FF84BEB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4141CF191E5CA98A0032D7EA /* PKHUD.framework */,
 				A81A36E71E59DF8A00EDC8CA /* Charts.framework */,
 				A81A36C21E59D3E800EDC8CA /* Alamofire.framework */,
 				A81A36C31E59D3E800EDC8CA /* PageController.framework */,
