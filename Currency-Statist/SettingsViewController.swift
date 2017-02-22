@@ -40,13 +40,12 @@ class SettingsViewController: UITableViewController {
 		return formatter
 	}()
 	
-	fileprivate let dateController = { () -> DateTimePickerViewController in 
-		let dateViewController = DateTimePickerViewController()
-		dateViewController.selectedtype = DateType
-		dateViewController.mainColor = .flatWhite
-		dateViewController.minDate = Defaults[.minimumDate]
-		dateViewController.maxDate = Defaults[.maximumDate]
-
+	fileprivate let dateController = { () -> DatePickerViewController in
+		let dateViewController = DatePickerViewController()
+		dateViewController.mainColor = .flatBlack
+		dateViewController.minimumDate = Defaults[.minimumDate]
+		dateViewController.maximumDate = Defaults[.maximumDate]
+		
 		return dateViewController
 	}()
 	
@@ -73,11 +72,11 @@ extension SettingsViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		dateController.delegate = self
 		seletedIndexPath = indexPath
-
+		
 		if indexPath.row == 0 {
-			dateController.date = startDate ?? Date()
+			dateController.currentDate = startDate ?? Date()
 		} else {
-			dateController.date = finishDate ?? Date()
+			dateController.currentDate = finishDate ?? Date()
 		}
 		
 		self.present(dateController, animated: true, completion: nil)
@@ -85,14 +84,16 @@ extension SettingsViewController {
 	}
 }
 
-extension SettingsViewController: DatePickerViewControllerDelegate {
-	func datePickerPickedDate(_ date: Date!) {
-		if seletedIndexPath?.row == 0 {
-			startDate = date
-			startDateLabel.text = formatter.string(from: date)
-		} else {
-			finishDate = date
-			finishDateLabel.text = formatter.string(from: date)
+extension SettingsViewController: DatePickerDelegate {
+	func datePicker(_ datePicker: DatePickerViewController, didSelectDate date: Date?) {
+		if let date = date {
+			if seletedIndexPath?.row == 0 {
+				startDate = date
+				startDateLabel.text = formatter.string(from: date)
+			} else {
+				finishDate = date
+				finishDateLabel.text = formatter.string(from: date)
+			}
 		}
 	}
 }
