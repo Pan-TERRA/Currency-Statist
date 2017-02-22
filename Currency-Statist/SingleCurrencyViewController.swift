@@ -27,6 +27,7 @@ class SingleCurrencyViewController: UIViewController {
 			currencyPriceChart?.setScaleEnabled(true)
 			currencyPriceChart?.pinchZoomEnabled = true
 			currencyPriceChart?.drawGridBackgroundEnabled = true
+			currencyPriceChart?.noDataText = ""
 			
 			let yAxis = currencyPriceChart?.leftAxis
 			yAxis?.labelFont = UIFont(name: "HelveticaNeue-Light", size: 12.0) ?? .preferredFont(forTextStyle: .body)
