@@ -19,7 +19,7 @@ class SingleCurrencyViewController: UIViewController {
 	
 	open var currencyPriceChart: LineChartView? {
 		didSet {
-			currencyPriceChart?.setViewPortOffsets(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0)
+			currencyPriceChart?.setViewPortOffsets(left: 0.0, top: 24.0, right: 0.0, bottom: 0.0)
 			currencyPriceChart?.backgroundColor = .flatWhite
 			currencyPriceChart?.gridBackgroundColor = .flatWhite
 			currencyPriceChart?.chartDescription?.enabled = false
@@ -43,6 +43,7 @@ class SingleCurrencyViewController: UIViewController {
 			xAsis?.labelPosition = .top
 			xAsis?.drawGridLinesEnabled = true
 			xAsis?.axisLineColor = .flatWhite
+            xAsis?.valueFormatter = DateValueFormatter(withDateFormat: "d MMM yyyy")
 			
 			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 		}
