@@ -9,8 +9,9 @@
 
 import UIKit
 
-@objc public protocol PKHUDAnimating {
-
+@objc protocol PKHUDAnimating {
+    
     func startAnimation()
     @objc optional func stopAnimation()
 }
+

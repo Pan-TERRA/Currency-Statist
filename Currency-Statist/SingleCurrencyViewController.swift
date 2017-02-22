@@ -27,6 +27,7 @@ class SingleCurrencyViewController: UIViewController {
 			currencyPriceChart?.setScaleEnabled(true)
 			currencyPriceChart?.pinchZoomEnabled = true
 			currencyPriceChart?.drawGridBackgroundEnabled = true
+			currencyPriceChart?.noDataText = ""
 			
 			let yAxis = currencyPriceChart?.leftAxis
 			yAxis?.labelFont = UIFont(name: "HelveticaNeue-Light", size: 12.0) ?? .preferredFont(forTextStyle: .body)
@@ -74,7 +75,13 @@ class SingleCurrencyViewController: UIViewController {
 	
 	func setupDataForChart() {
 		if let currency = currency {
-			let sellValues = currency.salePriceSet.priceValues.map { return ChartDataEntry(x: $0.date.timeIntervalSince1970, y:$0.value)}
+			var number = 0.0
+			let sellValues = currency.salePriceSet.priceValues.map { entry -> ChartDataEntry in
+				let entry = ChartDataEntry(x: number, y: entry.value)
+				number += 1.0
+				return entry
+			}
+
 			let sellDataSet = LineChartDataSet(values: sellValues, label: "Sale price")
 			sellDataSet.colors = [.flatOrange]
 			sellDataSet.circleColors = [.flatOrange]
@@ -84,6 +91,7 @@ class SingleCurrencyViewController: UIViewController {
 			sellDataSet.mode = .cubicBezier
 			sellDataSet.drawFilledEnabled = true
 			
+			currencyPriceChart?.clear()
 			currencyPriceChart?.data = LineChartData(dataSet: sellDataSet)
 		}
 	}

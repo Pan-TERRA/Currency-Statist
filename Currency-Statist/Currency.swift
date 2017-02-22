@@ -9,24 +9,19 @@
 import Foundation
 
 class Currency {
-	var type: CurrencyType
+	let type: CurrencyType
 	
-	open var salePriceSet: CurrencyPriceSet {
-		get {
-			return salePrices
-		}
-	}
-	
-	private var salePrices = CurrencyPriceSet()
-	
-	func appendSalePriceWith(priceEntry entry: CurrencyPriceEntry) {
-		salePrices.appendWith(priceEntry: entry)
-	}
+	open var salePriceSet: CurrencyPriceSet { return salePrices }
+	private let salePrices = CurrencyPriceSet()
 	
 	init(type: CurrencyType) {
 		self.type = type
 	}
 	
+	func appendSalePriceWith(priceEntry entry: CurrencyPriceEntry) {
+		salePrices.appendWith(priceEntry: entry)
+	}
+		
 	func sort() {
 		salePrices.sort()
 	}

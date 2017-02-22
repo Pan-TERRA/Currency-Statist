@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +30,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="vna-fB-NAt" kind="show" identifier="toSettingsSegue" id="ybN-DX-FZo"/>
+                        <segue destination="Iht-P4-TaQ" kind="show" identifier="toSettingsSegue" id="EaG-H8-Y3U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCz-Oz-I5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,78 +38,80 @@
             <point key="canvasLocation" x="1281" y="72"/>
         </scene>
         <!--Settings View Controller-->
-        <scene sceneID="PGo-0z-vfM">
+        <scene sceneID="uJi-4n-hhN">
             <objects>
-                <viewController id="vna-fB-NAt" customClass="SettingsViewController" customModule="Currency_Statist" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="H68-l3-QsH"/>
-                        <viewControllerLayoutGuide type="bottom" id="lvY-6G-91C"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JE3-Ty-mgm">
+                <tableViewController id="Iht-P4-TaQ" customClass="SettingsViewController" customModule="Currency_Statist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="i5e-uf-1nm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-T9-zjs">
-                                <rect key="frame" x="0.0" y="120" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="509221937.62344301">
-                                    <!--2017-02-19 18:32:17 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="startDatePickerValueDidChanged:" destination="vna-fB-NAt" eventType="valueChanged" id="rXj-34-Hwm"/>
-                                </connections>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePt-6L-pfd">
-                                <rect key="frame" x="16" y="72" width="343" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="GTJ-bp-sBn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZc-7l-7qk">
-                                <rect key="frame" x="16" y="344" width="343" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="eQ4-hH-Yp8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VL6-ZE-qlx">
-                                <rect key="frame" x="0.0" y="392" width="375" height="216"/>
-                                <date key="date" timeIntervalSinceReferenceDate="509221952.08346802">
-                                    <!--2017-02-19 18:32:32 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="finishDateValueDidChanged:" destination="vna-fB-NAt" eventType="valueChanged" id="Axy-24-Hlf"/>
-                                </connections>
-                            </datePicker>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HHb-T9-zjs" firstAttribute="leading" secondItem="VL6-ZE-qlx" secondAttribute="leading" id="5bb-wg-CJQ"/>
-                            <constraint firstItem="HHb-T9-zjs" firstAttribute="leading" secondItem="JE3-Ty-mgm" secondAttribute="leading" id="EHu-fU-gWg"/>
-                            <constraint firstItem="ePt-6L-pfd" firstAttribute="leading" secondItem="JE3-Ty-mgm" secondAttribute="leadingMargin" id="HmD-xk-wBy"/>
-                            <constraint firstItem="ePt-6L-pfd" firstAttribute="leading" secondItem="bZc-7l-7qk" secondAttribute="leading" id="MX6-Db-tXU"/>
-                            <constraint firstItem="HHb-T9-zjs" firstAttribute="top" secondItem="ePt-6L-pfd" secondAttribute="bottom" constant="8" symbolic="YES" id="OuD-fT-gh4"/>
-                            <constraint firstItem="bZc-7l-7qk" firstAttribute="top" secondItem="HHb-T9-zjs" secondAttribute="bottom" constant="8" symbolic="YES" id="aWk-bd-c0E"/>
-                            <constraint firstItem="ePt-6L-pfd" firstAttribute="trailing" secondItem="bZc-7l-7qk" secondAttribute="trailing" id="dp9-bW-onn"/>
-                            <constraint firstItem="ePt-6L-pfd" firstAttribute="top" secondItem="H68-l3-QsH" secondAttribute="bottom" constant="8" symbolic="YES" id="fli-IQ-hUv"/>
-                            <constraint firstItem="HHb-T9-zjs" firstAttribute="trailing" secondItem="VL6-ZE-qlx" secondAttribute="trailing" id="gmc-D0-wfU"/>
-                            <constraint firstAttribute="trailing" secondItem="HHb-T9-zjs" secondAttribute="trailing" id="noW-a3-EOy"/>
-                            <constraint firstItem="ePt-6L-pfd" firstAttribute="centerX" secondItem="HHb-T9-zjs" secondAttribute="centerX" id="qto-RB-Lfi"/>
-                            <constraint firstItem="VL6-ZE-qlx" firstAttribute="top" secondItem="bZc-7l-7qk" secondAttribute="bottom" constant="8" symbolic="YES" id="w16-Nd-iBe"/>
-                        </constraints>
-                    </view>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Charts Dates" id="ds8-51-yVx">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Gjc-FS-tW4" detailTextLabel="dDO-0Y-rEi" style="IBUITableViewCellStyleValue1" id="Xce-XJ-OF2">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xce-XJ-OF2" id="TIB-9x-JBV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gjc-FS-tW4">
+                                                    <rect key="frame" x="15" y="12" width="78" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDO-0Y-rEi">
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hdm-JB-jzP" detailTextLabel="uLh-jq-udg" style="IBUITableViewCellStyleValue1" id="T0j-GO-pL0">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T0j-GO-pL0" id="CKJ-k3-9JE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Finish Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdm-JB-jzP">
+                                                    <rect key="frame" x="15" y="12" width="85" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uLh-jq-udg">
+                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Iht-P4-TaQ" id="GzZ-hr-4pI"/>
+                            <outlet property="delegate" destination="Iht-P4-TaQ" id="DEd-c8-CK4"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="finishDatePicker" destination="VL6-ZE-qlx" id="7xJ-yh-awE"/>
-                        <outlet property="startDatePicker" destination="HHb-T9-zjs" id="9mG-GQ-yYI"/>
+                        <outlet property="finishDateLabel" destination="uLh-jq-udg" id="5Wf-Wm-vrk"/>
+                        <outlet property="startDateLabel" destination="dDO-0Y-rEi" id="3lf-az-yyN"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dN7-uo-zOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8KZ-In-p5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144.8000000000002" y="71.514242878560722"/>
+            <point key="canvasLocation" x="2094" y="67"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vWl-9D-qYA">

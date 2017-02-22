@@ -7,63 +7,92 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 protocol SettingsUpdateDelegate {
-    func settingsViewController(_ viewController: SettingsViewController, didUpdateDates: (startDate: Date, finishDate: Date)) -> Void
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) -> Void
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) -> Void
 }
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
 	open var delegate: SettingsUpdateDelegate?
+	fileprivate var seletedIndexPath: IndexPath?
 	
-	private var startDate: Date = UserDefaults.standard.startDate {
+	open var startDate: Date? {
 		didSet {
-			needReloadData = true
+			if let startDate = startDate, startDate.isLess(than: finishDate ?? Date()) {
+				delegate?.settingsViewController(self, didUpdateStartDate: startDate)
+			}
 		}
 	}
 	
-	private var finishDate: Date = UserDefaults.standard.finishDate {
+	open var finishDate: Date? {
 		didSet {
-			needReloadData = true
-		}
-	}
-    
-    private var needReloadData = false
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if needReloadData {
-            delegate?.settingsViewController(self, didUpdateDates: (startDate, finishDate))
-            UserDefaults.standard.startDate = startDate
-            UserDefaults.standard.finishDate = finishDate
-            needReloadData = false
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        startDatePicker.date = UserDefaults.standard.startDate
-        finishDatePicker.date = UserDefaults.standard.finishDate
-    }
-	
-	@IBOutlet weak var startDatePicker: UIDatePicker! {
-		didSet {
-			startDatePicker.maximumDate = Date()
+			if let finishDate = finishDate, finishDate.isGreater(than: startDate ?? Date()) {
+				delegate?.settingsViewController(self, didUpdateFinishDate: finishDate)
+			}
 		}
 	}
 	
-	@IBOutlet weak var finishDatePicker: UIDatePicker! {
+	fileprivate let formatter = { () -> DateFormatter in
+		let formatter = DateFormatter()
+		formatter.dateFormat = "dd.MM.yyyy"
+		return formatter
+	}()
+	
+	fileprivate let dateController = { () -> DateTimePickerViewController in 
+		let dateViewController = DateTimePickerViewController()
+		dateViewController.selectedtype = DateType
+		dateViewController.mainColor = .flatWhite
+		dateViewController.minDate = Defaults[.minimumDate]
+		dateViewController.maxDate = Defaults[.maximumDate]
+
+		return dateViewController
+	}()
+	
+	@IBOutlet weak var startDateLabel: UILabel! {
 		didSet {
-			finishDatePicker.maximumDate = Date()
+			if let startDate = startDate {
+				startDateLabel.text = formatter.string(from: startDate)
+			}
 		}
 	}
 	
-	@IBAction func startDatePickerValueDidChanged(_ sender: UIDatePicker) {
-		startDate = sender.date
+	@IBOutlet weak var finishDateLabel: UILabel! {
+		didSet {
+			if let finishDate = finishDate {
+				finishDateLabel.text = formatter.string(from: finishDate)
+			}
+		}
 	}
+}
+
+// MARK: - UITableViewDelegate
+extension SettingsViewController {
 	
-	@IBAction func finishDateValueDidChanged(_ sender: UIDatePicker) {
-		finishDate = sender.date
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		dateController.delegate = self
+		seletedIndexPath = indexPath
+
+		if indexPath.row == 0 {
+			dateController.date = startDate ?? Date()
+		} else {
+			dateController.date = finishDate ?? Date()
+		}
+		
+		self.present(dateController, animated: true, completion: nil)
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+}
+
+extension SettingsViewController: DatePickerViewControllerDelegate {
+	func datePickerPickedDate(_ date: Date!) {
+		if seletedIndexPath?.row == 0 {
+			startDate = date
+			startDateLabel.text = formatter.string(from: date)
+		} else {
+			finishDate = date
+			finishDateLabel.text = formatter.string(from: date)
+		}
 	}
 }

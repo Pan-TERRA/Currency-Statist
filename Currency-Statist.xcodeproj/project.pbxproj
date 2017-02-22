@@ -12,7 +12,6 @@
 		413A23DC1E59F2EE0097B0BC /* CurrencyPriceEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */; };
 		413A23DE1E59F3780097B0BC /* CurrencyPriceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */; };
 		4141CF1A1E5CA98A0032D7EA /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4141CF191E5CA98A0032D7EA /* PKHUD.framework */; };
-		4141CF1C1E5CABAF0032D7EA /* NSUserDefault+Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4141CF1B1E5CABAF0032D7EA /* NSUserDefault+Dates.swift */; };
 		416AFD301E59B45900D2E90C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416AFD2F1E59B45900D2E90C /* AppDelegate.swift */; };
 		416AFD351E59B45900D2E90C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416AFD331E59B45900D2E90C /* Main.storyboard */; };
 		416AFD371E59B45900D2E90C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416AFD361E59B45900D2E90C /* Assets.xcassets */; };
@@ -31,6 +30,12 @@
 		A81A36EA1E59F17000EDC8CA /* CurrencyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A36E91E59F17000EDC8CA /* CurrencyMenuCell.swift */; };
 		A81A36EC1E5A0F8500EDC8CA /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A36EB1E5A0F8500EDC8CA /* CurrencyType.swift */; };
 		A81A36EE1E5A1B2B00EDC8CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81A36ED1E5A1B2B00EDC8CA /* SettingsViewController.swift */; };
+		A84538A11E5DA5AA00187362 /* ChameleonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */; };
+		A84538A21E5DA5AA00187362 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */; };
+		A87571EA1E5CA6D30079EE7E /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A87571E91E5CA6D30079EE7E /* DateTimePickerViewController.m */; };
+		A8D619F01E5D6D31003472EC /* DateTimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D619EF1E5D6D31003472EC /* DateTimePickerView.xib */; };
+		A8D619F31E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */; };
+		A8D619F51E5D9C33003472EC /* UIKit+CurrencyStatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D619F41E5D9C33003472EC /* UIKit+CurrencyStatist.swift */; };
 		C2AE95CC4D9A2E22EF9961AC /* Pods_Currency_Statist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE78279BCAD75871216E91E7 /* Pods_Currency_Statist.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +46,6 @@
 		413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPriceEntry.swift; sourceTree = "<group>"; };
 		413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyPriceSet.swift; sourceTree = "<group>"; };
 		4141CF191E5CA98A0032D7EA /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = "Pods/../build/Debug-iphoneos/PKHUD/PKHUD.framework"; sourceTree = "<group>"; };
-		4141CF1B1E5CABAF0032D7EA /* NSUserDefault+Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefault+Dates.swift"; sourceTree = "<group>"; };
 		416AFD2C1E59B45900D2E90C /* Currency-Statist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency-Statist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		416AFD2F1E59B45900D2E90C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		416AFD341E59B45900D2E90C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +67,14 @@
 		A81A36E91E59F17000EDC8CA /* CurrencyMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyMenuCell.swift; sourceTree = "<group>"; };
 		A81A36EB1E5A0F8500EDC8CA /* CurrencyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		A81A36ED1E5A1B2B00EDC8CA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/Currency-Statist-flqsxkihvmjwniecfdlbnclykkqu/Build/Products/Debug-iphoneos/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
+		A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../Library/Developer/Xcode/DerivedData/Currency-Statist-flqsxkihvmjwniecfdlbnclykkqu/Build/Products/Debug-iphoneos/SwiftyUserDefaults/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
+		A87571E71E5CA6D20079EE7E /* Currency-Statist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Currency-Statist-Bridging-Header.h"; sourceTree = "<group>"; };
+		A87571E81E5CA6D30079EE7E /* DateTimePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePickerViewController.h; sourceTree = "<group>"; };
+		A87571E91E5CA6D30079EE7E /* DateTimePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePickerViewController.m; sourceTree = "<group>"; };
+		A8D619EF1E5D6D31003472EC /* DateTimePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTimePickerView.xib; sourceTree = "<group>"; };
+		A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+CurencyStatist.swift"; sourceTree = "<group>"; };
+		A8D619F41E5D9C33003472EC /* UIKit+CurrencyStatist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+CurrencyStatist.swift"; sourceTree = "<group>"; };
 		B966DBC5DC2D9B00B258D922 /* Pods-Currency-Statist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency-Statist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Currency-Statist/Pods-Currency-Statist.release.xcconfig"; sourceTree = "<group>"; };
 		DE78279BCAD75871216E91E7 /* Pods_Currency_Statist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Currency_Statist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84538A11E5DA5AA00187362 /* ChameleonFramework.framework in Frameworks */,
+				A84538A21E5DA5AA00187362 /* SwiftyUserDefaults.framework in Frameworks */,
 				4141CF1A1E5CA98A0032D7EA /* PKHUD.framework in Frameworks */,
 				A81A36E81E59DF8A00EDC8CA /* Charts.framework in Frameworks */,
 				A81A36CF1E59D4DD00EDC8CA /* SwiftyJSON.framework in Frameworks */,
@@ -86,6 +100,8 @@
 		3DB8D4721CE0DCC1FF84BEB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */,
+				A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */,
 				4141CF191E5CA98A0032D7EA /* PKHUD.framework */,
 				A81A36E71E59DF8A00EDC8CA /* Charts.framework */,
 				A81A36C21E59D3E800EDC8CA /* Alamofire.framework */,
@@ -109,10 +125,10 @@
 		413A23DA1E59F2BF0097B0BC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */,
 				413A23D41E59DA690097B0BC /* Currency.swift */,
-				413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */,
 				A81A36EB1E5A0F8500EDC8CA /* CurrencyType.swift */,
+				413A23DD1E59F3780097B0BC /* CurrencyPriceSet.swift */,
+				413A23DB1E59F2EE0097B0BC /* CurrencyPriceEntry.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -147,12 +163,13 @@
 		A81A36BD1E59D35C00EDC8CA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A87571E61E5CA6BB0079EE7E /* DateTimeController */,
 				A81A36D41E59D8B500EDC8CA /* PageController */,
 				A81A36BF1E59D38000EDC8CA /* UI */,
 				413A23DA1E59F2BF0097B0BC /* Model */,
+				A8D619F11E5D8BD6003472EC /* Utils */,
 				413A23D51E59DA690097B0BC /* CurrencyWorker.swift */,
 				416AFD2F1E59B45900D2E90C /* AppDelegate.swift */,
-				4141CF1B1E5CABAF0032D7EA /* NSUserDefault+Dates.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -169,9 +186,9 @@
 		A81A36BF1E59D38000EDC8CA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A81A36E91E59F17000EDC8CA /* CurrencyMenuCell.swift */,
 				A81A36C01E59D3AB00EDC8CA /* CurrenciesPageController.swift */,
 				A81A36E41E59D94100EDC8CA /* SingleCurrencyViewController.swift */,
-				A81A36E91E59F17000EDC8CA /* CurrencyMenuCell.swift */,
 				A81A36ED1E5A1B2B00EDC8CA /* SettingsViewController.swift */,
 			);
 			name = UI;
@@ -188,6 +205,26 @@
 				A81A36DC1E59D8B500EDC8CA /* PageControllerExtensions.swift */,
 			);
 			path = PageController;
+			sourceTree = "<group>";
+		};
+		A87571E61E5CA6BB0079EE7E /* DateTimeController */ = {
+			isa = PBXGroup;
+			children = (
+				A87571E81E5CA6D30079EE7E /* DateTimePickerViewController.h */,
+				A87571E91E5CA6D30079EE7E /* DateTimePickerViewController.m */,
+				A8D619EF1E5D6D31003472EC /* DateTimePickerView.xib */,
+				A87571E71E5CA6D20079EE7E /* Currency-Statist-Bridging-Header.h */,
+			);
+			name = DateTimeController;
+			sourceTree = "<group>";
+		};
+		A8D619F11E5D8BD6003472EC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */,
+				A8D619F41E5D9C33003472EC /* UIKit+CurrencyStatist.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		DA9432C74E9B5059B5FA0F4C /* Pods */ = {
@@ -234,7 +271,8 @@
 				TargetAttributes = {
 					416AFD2B1E59B45900D2E90C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = YD97N8TEJN;
+						DevelopmentTeam = 76LJ97E96C;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -263,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				416AFD3A1E59B45900D2E90C /* LaunchScreen.storyboard in Resources */,
+				A8D619F01E5D6D31003472EC /* DateTimePickerView.xib in Resources */,
 				416AFD371E59B45900D2E90C /* Assets.xcassets in Resources */,
 				416AFD351E59B45900D2E90C /* Main.storyboard in Resources */,
 			);
@@ -331,11 +370,13 @@
 				A81A36E51E59D94100EDC8CA /* SingleCurrencyViewController.swift in Sources */,
 				A81A36E31E59D8B500EDC8CA /* PageControllerExtensions.swift in Sources */,
 				A81A36EE1E5A1B2B00EDC8CA /* SettingsViewController.swift in Sources */,
+				A8D619F51E5D9C33003472EC /* UIKit+CurrencyStatist.swift in Sources */,
 				A81A36C11E59D3AB00EDC8CA /* CurrenciesPageController.swift in Sources */,
+				A8D619F31E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift in Sources */,
+				A87571EA1E5CA6D30079EE7E /* DateTimePickerViewController.m in Sources */,
 				A81A36E21E59D8B500EDC8CA /* PageController.swift in Sources */,
 				A81A36E11E59D8B500EDC8CA /* PageController+ContainerView.swift in Sources */,
 				A81A36EC1E5A0F8500EDC8CA /* CurrencyType.swift in Sources */,
-				4141CF1C1E5CABAF0032D7EA /* NSUserDefault+Dates.swift in Sources */,
 				A81A36DF1E59D8B500EDC8CA /* MenuBar.swift in Sources */,
 				A81A36DE1E59D8B500EDC8CA /* MenuBar+ContainerView.swift in Sources */,
 				A81A36EA1E59F17000EDC8CA /* CurrencyMenuCell.swift in Sources */,
@@ -464,17 +505,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F7C525F4AC9DA03AC3B23C1 /* Pods-Currency-Statist.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YD97N8TEJN;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 76LJ97E96C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
 				);
 				INFOPLIST_FILE = "Currency-Statist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pan-terra.Currency-Statist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Currency-Statist/Currency-Statist-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -483,17 +527,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B966DBC5DC2D9B00B258D922 /* Pods-Currency-Statist.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YD97N8TEJN;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 76LJ97E96C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
 				);
 				INFOPLIST_FILE = "Currency-Statist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pan-terra.Currency-Statist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Currency-Statist/Currency-Statist-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
