@@ -44,9 +44,6 @@ class CurrenciesPageController: PageController {
 		menuBar.registerClass(CurrencyMenuCell.self)
 		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 44.0)
 		
-		scrollView.isPagingEnabled = false
-		scrollView.isScrollEnabled = false
-		
 		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
 		
 		scrollView.isPagingEnabled = false
