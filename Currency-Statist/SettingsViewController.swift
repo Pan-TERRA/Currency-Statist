@@ -7,49 +7,92 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 protocol SettingsUpdateDelegate {
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) -> Void
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) -> Void
 }
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
 	open var delegate: SettingsUpdateDelegate?
+	fileprivate var seletedIndexPath: IndexPath?
 	
-	private var startDate: Date? {
+	open var startDate: Date? {
 		didSet {
-			delegate?.settingsViewController(self, didUpdateStartDate: startDate)
+			if let startDate = startDate, startDate.isLess(thanDate: finishDate ?? Date()) {
+				delegate?.settingsViewController(self, didUpdateStartDate: startDate)
+			}
 		}
 	}
 	
-	private var finishDate: Date? {
+	open var finishDate: Date? {
 		didSet {
-			delegate?.settingsViewController(self, didUpdateFinishDate: finishDate)
+			if let finishDate = finishDate, finishDate.isGreater(thanDate: startDate ?? Date()) {
+				delegate?.settingsViewController(self, didUpdateFinishDate: finishDate)
+			}
 		}
 	}
 	
-	open var loadedStartDate: Date?
-	open var loadedFinishDate: Date?
+	fileprivate let formatter = { () -> DateFormatter in
+		let formatter = DateFormatter()
+		formatter.dateFormat = "dd.MM.yyyy"
+		return formatter
+	}()
 	
-	@IBOutlet weak var startDatePicker: UIDatePicker! {
+	fileprivate let dateController = { () -> DateTimePickerViewController in 
+		let dateViewController = DateTimePickerViewController()
+		dateViewController.selectedtype = DateType
+		dateViewController.mainColor = .flatWhite
+		dateViewController.minDate = Defaults[.minimumDate]
+		dateViewController.maxDate = Defaults[.maximumDate]
+
+		return dateViewController
+	}()
+	
+	@IBOutlet weak var startDateLabel: UILabel! {
 		didSet {
-			startDatePicker.maximumDate = Date()
-			startDatePicker.date = loadedStartDate ?? Date()
+			if let startDate = startDate {
+				startDateLabel.text = formatter.string(from: startDate)
+			}
 		}
 	}
 	
-	@IBOutlet weak var finishDatePicker: UIDatePicker! {
+	@IBOutlet weak var finishDateLabel: UILabel! {
 		didSet {
-			finishDatePicker.maximumDate = Date()
-			finishDatePicker.date = loadedFinishDate ?? Date()
+			if let finishDate = finishDate {
+				finishDateLabel.text = formatter.string(from: finishDate)
+			}
 		}
 	}
+}
+
+// MARK: - UITableViewDelegate
+extension SettingsViewController {
 	
-	@IBAction func startDatePickerValueDidChanged(_ sender: UIDatePicker) {
-		startDate = sender.date
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		dateController.delegate = self
+		seletedIndexPath = indexPath
+
+		if indexPath.row == 0 {
+			dateController.date = startDate ?? Date()
+		} else {
+			dateController.date = finishDate ?? Date()
+		}
+		
+		self.present(dateController, animated: true, completion: nil)
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
-	
-	@IBAction func finishDateValueDidChanged(_ sender: UIDatePicker) {
-		finishDate = sender.date
+}
+
+extension SettingsViewController: DatePickerViewControllerDelegate {
+	func datePickerPickedDate(_ date: Date!) {
+		if seletedIndexPath?.row == 0 {
+			startDate = date
+			startDateLabel.text = formatter.string(from: date)
+		} else {
+			finishDate = date
+			finishDateLabel.text = formatter.string(from: date)
+		}
 	}
 }

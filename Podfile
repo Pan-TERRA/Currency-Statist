@@ -6,5 +6,6 @@ target 'Currency-Statist' do
 	pod 'SwiftyJSON'
 	pod 'Charts'
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+	pod 'SwiftyUserDefaults'
 	
 end

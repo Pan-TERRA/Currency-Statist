@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 // TODO: 
 // 1. Нужна анимация на время, которое занимает прогрузка данных, чекни на гитхабе что-то красивенькое (по запросу progress hud вроде)
-// 2. Можно попробовать сделать графики немного красивее, мне не особо их фон нравится
-// 3. Нужно протестить изменение даты и подгрузку данных
-// 4. Нужно сделать так, чтобы начальная дата была минимум на 4 года меньше от текущей (чтобы не было проблем с апишкой)
 // 5. Тестить, тестить и ещё раз тестить
-// 6. Заголовки валют можно сделать нормальными, а не USD и тд., как сейчас // Done
 //
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {	
 	var window: UIWindow?
+	
+	func applicationDidFinishLaunching(_ application: UIApplication) {
+		Defaults[.minimumDate] = NSCalendar.current.date(byAdding: .year, value: -4, to: Date())
+		Defaults[.maximumDate] = Date()
+		
+		if Defaults[.startDate] == nil {
+			Defaults[.startDate] = NSCalendar.current.date(byAdding: .month, value: -1, to: Date())
+		}
+		
+		if Defaults[.finishDate] == nil {
+			Defaults[.finishDate] = Date()
+		}
+	}
 }

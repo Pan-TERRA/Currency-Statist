@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import SwiftyUserDefaults
 
 class CurrenciesPageController: PageController {
 	fileprivate let worker = CurrencyWorker()
@@ -43,8 +44,8 @@ class CurrenciesPageController: PageController {
 		navigationController?.navigationBar.barTintColor = .flatOrange
 		navigationController?.navigationBar.isTranslucent = false
 		
-		finishDate = Date()
-		startDate = NSCalendar.current.date(byAdding: .month, value: -1, to: finishDate!)
+		finishDate = Defaults[.finishDate]
+		startDate = Defaults[.startDate]
 		
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
@@ -62,8 +63,8 @@ class CurrenciesPageController: PageController {
 		if let identifier = segue.identifier, identifier == toSettingsSegue {
 			let destinationVC = segue.destination as! SettingsViewController
 			destinationVC.delegate = self
-			destinationVC.loadedStartDate = startDate
-			destinationVC.loadedFinishDate = finishDate
+			destinationVC.startDate = startDate
+			destinationVC.finishDate = finishDate
 		}
 	}
 	
@@ -84,10 +85,12 @@ class CurrenciesPageController: PageController {
 
 extension CurrenciesPageController: SettingsUpdateDelegate {
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) {
+		Defaults[.startDate] = startDate
 		self.startDate = startDate
 	}
 	
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) {
+		Defaults[.finishDate] = finishDate
 		self.finishDate = finishDate
 	}
 }
