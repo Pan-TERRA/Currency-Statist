@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Currency Statist
+
+  Created by Nick Baidikoff on 3/10/17.
+  Copyright © 2017 Vlad Krut. All rights reserved.
+*/
+
+// Date Picker View Controller
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+
+// Currencies Page Controller
+"Error" = "Error";
+"OK" = "OK";
+
+// Single Currency View Controller
+"Sale Price" = "Sale Price";
+
+// Currency Type
+"United States Dollar" = "United States Dollar";
+"Euro" = "Euro";
+"Russian Rubble" = "Russian Rubble";
+"Swiss Franc" = "Swiss Franc";
+"British Pound" = "British Pound";
+"Polish Zloty" = "Polish Zloty";
+"Swedish Krona" = "Swedish Krona";
+"Canadian Dollar" = "Canadian Dollar";

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CurrencyMenuCell: MenuCell {
-	
 	required init(frame: CGRect) {
 		super.init(frame: frame)
 		contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)

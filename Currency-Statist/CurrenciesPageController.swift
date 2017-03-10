@@ -81,8 +81,8 @@ class CurrenciesPageController: PageController {
 			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
 				HUD.hide()
 				if let error = error {
-					let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+					let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
 					self.present(alert, animated: true, completion: nil)
 					HUD.flash(.error, delay: 1.0)
 				} else {
@@ -95,23 +95,19 @@ class CurrenciesPageController: PageController {
 }
 
 extension CurrenciesPageController: SettingsUpdateDelegate {
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) {
-		if let current = self.startDate, let startDate = startDate {
-			if !current.isEqual(to: startDate) {
-				Defaults[.startDate] = startDate
-				self.startDate = startDate
-				self.isDateChanged = true
-			}
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date) {
+		if let current = self.startDate, !current.isEqual(to: startDate) {
+			Defaults[.startDate] = startDate
+			self.startDate = startDate
+			self.isDateChanged = true
 		}
 	}
 	
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) {
-		if let current = self.finishDate, let finishDate = finishDate {
-			if !current.isEqual(to: finishDate) {
-				Defaults[.finishDate] = finishDate
-				self.finishDate = finishDate
-				self.isDateChanged = true
-			}
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date) {
+		if let current = self.finishDate, !current.isEqual(to: finishDate) {
+			Defaults[.finishDate] = finishDate
+			self.finishDate = finishDate
+			self.isDateChanged = true
 		}
 	}
 }

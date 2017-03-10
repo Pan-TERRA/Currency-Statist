@@ -39,17 +39,14 @@ class CurrencyWorker {
 						
 						if type != nil {
 							var currentCurrency = Currency(type: type!)
-							let thisTypeOfCurrency = fetchedCurrencies.filter { $0.type == type }
-							if thisTypeOfCurrency.isEmpty {
+							let existingCurrency = fetchedCurrencies.filter { $0.type == type }
+							if existingCurrency.isEmpty {
 								fetchedCurrencies.append(currentCurrency)
-							} else if let first = thisTypeOfCurrency.first {
+							} else if let first = existingCurrency.first {
 								currentCurrency = first
 							}
 							
-							let formatter = DateFormatter()
-							formatter.dateFormat = "dd.MM.yyyy"
-							let date = formatter.date(from: responseJSON[self.date].stringValue)!
-							
+							let date = DateFormatter.medium.date(from: responseJSON[self.date].stringValue)!
 							let salePrice = rateJSON[self.saleRateNB].doubleValue
 							currentCurrency.appendSalePriceWith(priceEntry: CurrencyPriceEntry(date: date, value: salePrice))
 						}
@@ -69,22 +66,18 @@ class CurrencyWorker {
 	}
 	
 	private func getStringsValue(from firstDate: Date, to lastDate: Date) -> [String] {
-		let calendar = NSCalendar.current
-		let normalizedStartDate = calendar.startOfDay(for: firstDate)
-		let normalizedLastDate = calendar.startOfDay(for: lastDate)
+		let startDate = NSCalendar.current.startOfDay(for: firstDate)
+		let finishDate = NSCalendar.current.startOfDay(for: lastDate)
 		
-		var dates = [normalizedStartDate]
-		var currentDate = normalizedStartDate
 		
-		while !calendar.isDate(currentDate, inSameDayAs: normalizedLastDate) {
-			currentDate = calendar.date(byAdding:.day, value: 1, to: currentDate)!
-			dates.append(currentDate)
+		var dates = [DateFormatter.medium.string(from: startDate)]
+		var currentDate = startDate
+		
+		while !NSCalendar.current.isDate(currentDate, inSameDayAs: finishDate) {
+			currentDate = NSCalendar.current.date(byAdding:.day, value: 1, to: currentDate)!
+			dates.append(DateFormatter.medium.string(from: currentDate))
 		}
 		
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "dd.MM.yyyy"
-		
-		return dates.map { dateFormatter.string(from: $0) }
-		
+		return dates
 	}
 }

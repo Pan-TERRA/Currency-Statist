@@ -9,17 +9,8 @@
 import Foundation
 import Charts
 
-class DateValueFormatter: NSObject {
-    
-    open let dateFormatter = DateFormatter()
-    
-    init(withDateFormat format: String) {
-        dateFormatter.dateFormat = format
-    }
-}
-
-extension DateValueFormatter: IAxisValueFormatter {
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return dateFormatter.string(from: Date(timeIntervalSince1970: value))
-    }
+class DateValueFormatter: NSObject, IAxisValueFormatter {
+	func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+		return DateFormatter.shortLocalized.string(from: Date(timeIntervalSince1970: value))
+	}
 }

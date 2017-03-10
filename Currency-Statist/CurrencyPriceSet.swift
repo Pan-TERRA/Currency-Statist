@@ -24,7 +24,7 @@ class CurrencyPriceSet {
 		}
 	}
 	
-	func appendWith(priceEntry entry: CurrencyPriceEntry) {
+	func append(withPriceEntry entry: CurrencyPriceEntry) {
 		prices.append(entry)
 	}
 	

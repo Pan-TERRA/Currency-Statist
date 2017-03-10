@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Start Date"; ObjectID = "Gjc-FS-tW4"; */
+"Gjc-FS-tW4.text" = "Начальная дата";
+
+/* Class = "UINavigationItem"; title = "Currency Statist"; ObjectID = "bUL-cI-iUz"; */
+"bUL-cI-iUz.title" = "Валютный статист";
+
+/* Class = "UITableViewSection"; headerTitle = "Charts dates"; ObjectID = "ds8-51-yVx"; */
+"ds8-51-yVx.headerTitle" = "Границы графиков";
+
+/* Class = "UILabel"; text = "Finish Date"; ObjectID = "hdm-JB-jzP"; */
+"hdm-JB-jzP.text" = "Конечная дата";

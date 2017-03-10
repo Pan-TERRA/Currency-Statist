@@ -20,14 +20,14 @@ enum CurrencyType : String {
 	
 	var description: String {
 		switch self {
-		case .usd: return "United States Dollar"
-		case .eur: return "Euro"
-		case .rub: return "Russian Rubble"
-		case .chf: return "Swiss Franc"
-		case .gbp: return "British Pound"
-		case .plz: return "Polish Zloty"
-		case .sek: return "Swedish Krona"
-		case .cad: return "Canadian Dollar"
+		case .usd: return NSLocalizedString("United States Dollar", comment: "")
+		case .eur: return NSLocalizedString("Euro", comment: "")
+		case .rub: return NSLocalizedString("Russian Rubble", comment: "")
+		case .chf: return NSLocalizedString("Swiss Franc", comment: "")
+		case .gbp: return NSLocalizedString("British Pound", comment: "")
+		case .plz: return NSLocalizedString("Polish Zloty", comment: "")
+		case .sek: return NSLocalizedString("Swedish Krona", comment: "")
+		case .cad: return NSLocalizedString("Canadian Dollar", comment: "")
 		}
 	}
 	

@@ -44,7 +44,7 @@ class SingleCurrencyViewController: UIViewController {
 			xAsis?.labelPosition = .top
 			xAsis?.drawGridLinesEnabled = true
 			xAsis?.axisLineColor = .flatWhite
-			xAsis?.valueFormatter = DateValueFormatter(withDateFormat: "d MMM yyyy")
+			xAsis?.valueFormatter = DateValueFormatter()
 			
 			currencyPriceChart?.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
 		}
@@ -77,7 +77,7 @@ class SingleCurrencyViewController: UIViewController {
 	func setupDataForChart() {
 		if let currency = currency {
 			let sellValues = currency.salePriceSet.priceValues.map { return ChartDataEntry(x: $0.date.timeIntervalSince1970, y:$0.value)}
-			let sellDataSet = LineChartDataSet(values: sellValues, label: "Sale price")
+			let sellDataSet = LineChartDataSet(values: sellValues, label: NSLocalizedString("Sale Price", comment: ""))
 			sellDataSet.colors = [.flatOrange]
 			sellDataSet.circleColors = [.flatOrange]
 			sellDataSet.circleHoleColor = .flatOrange

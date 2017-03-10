@@ -10,8 +10,8 @@ import UIKit
 import SwiftyUserDefaults
 
 protocol SettingsUpdateDelegate {
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date?) -> Void
-	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date?) -> Void
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date) -> Void
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date) -> Void
 }
 
 class SettingsViewController: UITableViewController {
@@ -34,12 +34,6 @@ class SettingsViewController: UITableViewController {
 		}
 	}
 	
-	fileprivate let formatter = { () -> DateFormatter in
-		let formatter = DateFormatter()
-		formatter.dateFormat = "dd.MM.yyyy"
-		return formatter
-	}()
-	
 	fileprivate let dateController = { () -> DatePickerViewController in
 		let dateViewController = DatePickerViewController()
 		dateViewController.mainColor = .flatBlack
@@ -52,7 +46,7 @@ class SettingsViewController: UITableViewController {
 	@IBOutlet weak var startDateLabel: UILabel! {
 		didSet {
 			if let startDate = startDate {
-				startDateLabel.text = formatter.string(from: startDate)
+				startDateLabel.text = DateFormatter.mediumLocalized.string(from: startDate)
 			}
 		}
 	}
@@ -60,17 +54,20 @@ class SettingsViewController: UITableViewController {
 	@IBOutlet weak var finishDateLabel: UILabel! {
 		didSet {
 			if let finishDate = finishDate {
-				finishDateLabel.text = formatter.string(from: finishDate)
+				finishDateLabel.text = DateFormatter.mediumLocalized.string(from: finishDate)
 			}
 		}
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		dateController.delegate = self
 	}
 }
 
 // MARK: - UITableViewDelegate
 extension SettingsViewController {
-	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		dateController.delegate = self
 		seletedIndexPath = indexPath
 		
 		if indexPath.row == 0 {
@@ -89,10 +86,10 @@ extension SettingsViewController: DatePickerDelegate {
 		if let date = date {
 			if seletedIndexPath?.row == 0 {
 				startDate = date
-				startDateLabel.text = formatter.string(from: date)
+				startDateLabel.text = DateFormatter.mediumLocalized.string(from: date)
 			} else {
 				finishDate = date
-				finishDateLabel.text = formatter.string(from: date)
+				finishDateLabel.text = DateFormatter.mediumLocalized.string(from: date)
 			}
 		}
 	}

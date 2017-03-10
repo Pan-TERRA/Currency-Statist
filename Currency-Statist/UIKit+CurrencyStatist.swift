@@ -10,22 +10,22 @@ import Foundation
 
 extension Date {
 	func isGreater(than dateToCompare: Date) -> Bool {
-		return self.compare(dateToCompare) == .orderedDescending
+		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) == .orderedDescending
 	}
 	
 	func isLess(than dateToCompare: Date) -> Bool {
-		return self.compare(dateToCompare) == .orderedAscending
+		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) == .orderedAscending
 	}
 	
 	func isGreaterOrEqual(than dateToCompare: Date) -> Bool {
-		return self.compare(dateToCompare) != .orderedAscending
+		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) != .orderedAscending
 	}
 	
 	func isLessOrEqual(than dateToCompare: Date) -> Bool {
-		return self.compare(dateToCompare) != .orderedDescending
+		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) != .orderedDescending
 	}
 	
 	func isEqual(to dateToCompare: Date) -> Bool {
-		return self.compare(dateToCompare) == .orderedSame
+		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) == .orderedSame
 	}
 }
