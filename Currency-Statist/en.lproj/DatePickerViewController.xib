@@ -24,24 +24,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSy-6h-qth">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSy-6h-qth">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="FTI-Pi-Q9i">
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FTI-Pi-Q9i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qlm-Zl-PUP">
-                                <rect key="frame" x="48" y="187" width="280" height="294"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlm-Zl-PUP">
+                                <rect key="frame" x="47.5" y="186.5" width="280" height="294"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-OZ-QS8" userLabel="Separator2 View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-OZ-QS8" userLabel="Separator2 View">
                                         <rect key="frame" x="0.0" y="260" width="280" height="1"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ddj-sa-6Ou"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-CT-iEf" userLabel="Separator3 View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-CT-iEf" userLabel="Separator3 View">
                                         <rect key="frame" x="140" y="260" width="1" height="34"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -49,7 +48,7 @@
                                             <constraint firstAttribute="width" constant="1" id="n9Z-nN-yOf"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t74-vJ-WIa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t74-vJ-WIa">
                                         <rect key="frame" x="140" y="262" width="140" height="30"/>
                                         <state key="normal" title="Set date">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,14 +57,14 @@
                                             <action selector="onConfirmTouchUpInside:" destination="-1" eventType="touchUpInside" id="hhS-Yk-ed1"/>
                                         </connections>
                                     </button>
-                                    <datePicker opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rdq-Tf-Vpc">
+                                    <datePicker opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rdq-Tf-Vpc">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="252"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <date key="date" timeIntervalSinceReferenceDate="509455495.96077299">
                                             <!--2017-02-22 11:24:55 +0000-->
                                         </date>
                                     </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q12-dp-Dob">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q12-dp-Dob">
                                         <rect key="frame" x="0.0" y="262" width="140" height="30"/>
                                         <state key="normal" title="Back">
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,7 +107,13 @@
                     <blurEffect style="light"/>
                 </visualEffectView>
             </subviews>
-            <point key="canvasLocation" x="631.5" y="369.5"/>
+            <constraints>
+                <constraint firstItem="eSy-6h-qth" firstAttribute="leading" secondItem="R6o-pg-lbf" secondAttribute="leading" id="VBV-I9-WQZ"/>
+                <constraint firstAttribute="bottom" secondItem="eSy-6h-qth" secondAttribute="bottom" id="Zv9-1M-3KK"/>
+                <constraint firstAttribute="trailing" secondItem="eSy-6h-qth" secondAttribute="trailing" id="lD0-9P-DGw"/>
+                <constraint firstItem="eSy-6h-qth" firstAttribute="top" secondItem="R6o-pg-lbf" secondAttribute="top" id="yXl-Jz-4tO"/>
+            </constraints>
+            <point key="canvasLocation" x="631" y="369"/>
         </view>
     </objects>
 </document>

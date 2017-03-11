@@ -42,7 +42,7 @@ class CurrenciesPageController: PageController {
 		
 		menuBar.backgroundColor = UIColor.white.withAlphaComponent(0.9)
 		menuBar.registerClass(CurrencyMenuCell.self)
-		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: 375.0, height: 44.0)
+		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 44.0)
 		
 		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
 		
