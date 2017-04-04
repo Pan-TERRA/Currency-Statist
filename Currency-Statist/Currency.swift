@@ -18,7 +18,7 @@ class Currency {
 		self.type = type
 	}
 	
-	func appendSalePriceWith(priceEntry entry: CurrencyPriceEntry) {
+	func append(priceEntry entry: CurrencyPriceEntry) {
 		salePrices.append(withPriceEntry: entry)
 	}
 		

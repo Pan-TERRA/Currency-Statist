@@ -23,7 +23,7 @@ extension DateFormatter {
 	
 	public static let medium: DateFormatter = {
 		let formatter = DateFormatter()
-		formatter.dateFormat = "dd.MM.yyyy"
+		formatter.dateFormat = "yyyy-MM-dd"
 		return formatter
 	}()
 }

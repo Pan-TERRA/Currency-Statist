@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CurrencyPriceEntry {
+struct CurrencyPriceEntry {
 	let date: Date
 	let value: Double
 	

@@ -36,6 +36,7 @@ class SingleCurrencyViewController: UIViewController {
 			yAxis?.labelPosition = .insideChart
 			yAxis?.drawGridLinesEnabled = true
 			yAxis?.axisLineColor = .flatWhite
+			yAxis?.valueFormatter = RateValueFormatter()
 			
 			let xAsis = currencyPriceChart?.xAxis
 			xAsis?.labelFont = UIFont(name: "HelveticaNeue-Light", size: 12.0) ?? .preferredFont(forTextStyle: .body)
@@ -83,8 +84,9 @@ class SingleCurrencyViewController: UIViewController {
 			sellDataSet.circleHoleColor = .flatOrange
 			sellDataSet.circleRadius = 4.0
 			sellDataSet.fillColor = .flatOrange
-			sellDataSet.mode = .cubicBezier
+			sellDataSet.mode = .stepped
 			sellDataSet.drawFilledEnabled = true
+			sellDataSet.valueFormatter = RateDataSetValueFormatter()
 			
 			currencyPriceChart?.clear()
 			currencyPriceChart?.data = LineChartData(dataSet: sellDataSet)

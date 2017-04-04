@@ -12,6 +12,7 @@ import SwiftyUserDefaults
 protocol SettingsUpdateDelegate {
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateStartDate startDate: Date) -> Void
 	func settingsViewController(_ viewController: SettingsViewController, didUpdateFinishDate finishDate: Date) -> Void
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateBaseCurrencyType newType: CurrencyType) -> Void
 }
 
 class SettingsViewController: UITableViewController {
@@ -34,6 +35,14 @@ class SettingsViewController: UITableViewController {
 		}
 	}
 	
+	fileprivate let currencyTypeMap = { () -> [String: CurrencyType] in
+		var data = [String: CurrencyType]()
+		for type in iterateEnum(CurrencyType.self) {
+			data[NSLocalizedString(type.rawValue, comment: "")] = type
+		}
+		return data
+	}()
+	
 	fileprivate let dateController = { () -> DatePickerViewController in
 		let dateViewController = DatePickerViewController()
 		dateViewController.mainColor = .flatBlack
@@ -41,6 +50,19 @@ class SettingsViewController: UITableViewController {
 		dateViewController.maximumDate = Defaults[.maximumDate]
 		
 		return dateViewController
+	}()
+	
+	fileprivate let dataController = { () -> CustomDataPickerViewController in
+		let dataViewController = CustomDataPickerViewController()
+		
+		var data: [String] = []
+		for type in iterateEnum(CurrencyType.self) {
+			data += [NSLocalizedString(type.rawValue, comment: "")]
+		}
+		
+		dataViewController.data = data
+		
+		return dataViewController
 	}()
 	
 	@IBOutlet weak var startDateLabel: UILabel! {
@@ -59,9 +81,16 @@ class SettingsViewController: UITableViewController {
 		}
 	}
 	
+	@IBOutlet weak var baseCurrency: UILabel! {
+		didSet {
+			baseCurrency.text = NSLocalizedString(Defaults[.baseCurrencyType]!, comment: "")
+		}
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		dateController.delegate = self
+		dataController.delegate = self
 	}
 }
 
@@ -70,13 +99,18 @@ extension SettingsViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		seletedIndexPath = indexPath
 		
-		if indexPath.row == 0 {
-			dateController.currentDate = startDate ?? Date()
+		if indexPath.section == 0 {
+			if indexPath.row == 0 {
+				dateController.currentDate = startDate ?? Date()
+			} else {
+				dateController.currentDate = finishDate ?? Date()
+			}
+			
+			self.present(dateController, animated: true, completion: nil)
 		} else {
-			dateController.currentDate = finishDate ?? Date()
+			self.present(dataController, animated: true, completion: nil)
 		}
 		
-		self.present(dateController, animated: true, completion: nil)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
@@ -91,6 +125,15 @@ extension SettingsViewController: DatePickerDelegate {
 				finishDate = date
 				finishDateLabel.text = DateFormatter.mediumLocalized.string(from: date)
 			}
+		}
+	}
+}
+
+extension SettingsViewController: CustomDataPickerDelegate {
+	func dataPicker(_ dataPicker: CustomDataPickerViewController, didSelectData data: String?) {
+		if let data = data, let currencyType = currencyTypeMap[data] {
+			baseCurrency.text = NSLocalizedString(currencyType.rawValue, comment: "")
+			delegate?.settingsViewController(self, didUpdateBaseCurrencyType: currencyType)
 		}
 	}
 }

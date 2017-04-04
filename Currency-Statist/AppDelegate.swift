@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
 	func applicationDidFinishLaunching(_ application: UIApplication) {
+		setupDefaults()
+	}
+	
+	func setupDefaults() {
 		Defaults[.minimumDate] = NSCalendar.current.date(byAdding: .year, value: -4, to: Date())
 		Defaults[.maximumDate] = Date()
 		
@@ -24,5 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if Defaults[.finishDate] == nil {
 			Defaults[.finishDate] = Date()
 		}
+		
+		if Defaults[.baseCurrencyType] == nil {
+			Defaults[.baseCurrencyType] = CurrencyType.usd.rawValue
+		}
+
 	}
 }

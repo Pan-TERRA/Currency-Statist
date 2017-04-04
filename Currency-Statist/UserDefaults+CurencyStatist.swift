@@ -15,4 +15,6 @@ extension DefaultsKeys {
 	
 	open static let startDate = DefaultsKey<Date?>("startDate")
 	open static let finishDate = DefaultsKey<Date?>("finishDate")
+	
+	open static let baseCurrencyType = DefaultsKey<String?>("baseCurrencyType")
 }

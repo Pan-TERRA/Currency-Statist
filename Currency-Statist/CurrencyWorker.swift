@@ -9,17 +9,18 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SwiftyUserDefaults
 
 class CurrencyWorker {
-	private let APIHost = "https://api.privatbank.ua/p24api/exchange_rates?json&date="
+	private let APIHost = "http://api.fixer.io/"
+	private let baseSuffix = "?base="
 	
-	private let exchangeRate = "exchangeRate"
-	private let currency = "currency"
+	private let rates = "rates"
 	private let date = "date"
-	private let saleRateNB = "saleRateNB"
+	private let base = "base"
 	
 	open func fetchExchangeRates(from firstDate: Date, to lastDate: Date, withCompletionHandler handler:@escaping (([Currency], Error?) -> Void)) {
-		let stringDates = getStringsValue(from: firstDate, to: lastDate)
+		let stringDates = strings(from: firstDate, to: lastDate)
 		let fetchGroup = DispatchGroup()
 		
 		var fetchedCurrencies = [Currency]()
@@ -28,35 +29,35 @@ class CurrencyWorker {
 		for stringDate in stringDates {
 			fetchGroup.enter()
 			
-			Alamofire.request(APIHost + stringDate).responseJSON { response in
-				switch response.result {
-				case .success(let value):
-					let responseJSON = JSON(value)
-					let ratesJSON = responseJSON[self.exchangeRate]
-										
-					for (_, rateJSON) in ratesJSON {
-						let type = CurrencyType(rawValue: rateJSON[self.currency].stringValue)
+			Alamofire.request(APIHost + stringDate + baseSuffix + "\(Defaults[.baseCurrencyType]!)", method: .get)
+				.responseJSON { response in
+					switch response.result {
+					case .success(let value):
+						let json = JSON(value)
+						let date = DateFormatter.medium.date(from: json[self.date].string ?? "")
+						let rates = json[self.rates]
 						
-						if type != nil {
-							var currentCurrency = Currency(type: type!)
-							let existingCurrency = fetchedCurrencies.filter { $0.type == type }
-							if existingCurrency.isEmpty {
-								fetchedCurrencies.append(currentCurrency)
-							} else if let first = existingCurrency.first {
-								currentCurrency = first
+						if let date = date {
+							for (currencyTypeString, rate) in rates {
+								if let currencyType = CurrencyType(rawValue: currencyTypeString) {
+									let priceEntry = CurrencyPriceEntry(date: date, value: rate.double ?? 0.0)
+									let existingCurrencies = fetchedCurrencies.filter { $0.type == currencyType }
+									
+									if existingCurrencies.isEmpty {
+										let currency = Currency(type: currencyType)
+										currency.append(priceEntry: priceEntry)
+										fetchedCurrencies.append(currency)
+									} else if let currency = existingCurrencies.first {
+										currency.append(priceEntry: priceEntry)
+									}
+								}
 							}
-							
-							let date = DateFormatter.medium.date(from: responseJSON[self.date].stringValue)!
-							let salePrice = rateJSON[self.saleRateNB].doubleValue
-							currentCurrency.appendSalePriceWith(priceEntry: CurrencyPriceEntry(date: date, value: salePrice))
 						}
+					case .failure(let error):
+						fetchError = error
 					}
-				case .failure(let error):
-					fetchError = error
+					fetchGroup.leave()
 				}
-				fetchGroup.leave()
-			}
-			
 		}
 		
 		fetchGroup.notify(queue: .main) {
@@ -65,10 +66,9 @@ class CurrencyWorker {
 		}
 	}
 	
-	private func getStringsValue(from firstDate: Date, to lastDate: Date) -> [String] {
+	private func strings(from firstDate: Date, to lastDate: Date) -> [String] {
 		let startDate = NSCalendar.current.startOfDay(for: firstDate)
 		let finishDate = NSCalendar.current.startOfDay(for: lastDate)
-		
 		
 		var dates = [DateFormatter.medium.string(from: startDate)]
 		var currentDate = startDate

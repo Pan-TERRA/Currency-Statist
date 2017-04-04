@@ -1,37 +1,36 @@
 //
-//  DatePickerViewController.swift
-//  DatePicker
+//  CustomDataViewController.swift
+//  Currency Statist
 //
-//  Created by Nick Baidikoff on 2/22/17.
-//  Copyright © 2017 Nick Baidikoff. All rights reserved.
+//  Created by Nick Baidikoff on 3/28/17.
+//  Copyright © 2017 Vlad Krut. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
-@objc public protocol DatePickerDelegate {
+@objc public protocol CustomDataPickerDelegate {
 	
-	/// Is called when user select new date
+	/// Is called when user select new data
 	///
-	/// - parameter datePicker: The DatePicker VC
-	/// - parameter date: The new date
+	/// - parameter dataPicker: The DataPicker VC
+	/// - parameter data: The new data
 	///
-	func datePicker(_ datePicker: DatePickerViewController, didSelectDate date: Date?) -> Void
-	
+	func dataPicker(_ dataPicker: CustomDataPickerViewController, didSelectData data: String?) -> Void
+
 	/// Is called straight before the dismissing Date Picker VC
 	///
 	/// - parameter datePicker: The DatePicker VC
 	///
-	@objc optional func datePickerWillDismissViewController(_ datePicker: DatePickerViewController) -> Void
+	@objc optional func dataPickerWillDismissViewController(_ dataPicker: CustomDataPickerViewController) -> Void
 	
 	/// Is called straight after the dismissing Date Picker VC
 	///
 	/// - parameter datePicker: The Date Picker VC
 	///
-	@objc optional func datePickerDidDismissViewController(_ datePicker: DatePickerViewController) -> Void
+	@objc optional func dataPickerDidDismissViewController(_ dataPicker: CustomDataPickerViewController) -> Void
 }
 
-public class DatePickerViewController: UIViewController {
+public class CustomDataPickerViewController: UIViewController {
 	
 	// MARK: - Outlets
 	@IBOutlet weak var background: UIView! {
@@ -70,59 +69,19 @@ public class DatePickerViewController: UIViewController {
 		}
 	}
 	
-	@IBOutlet weak var datePicker: UIDatePicker! {
+	@IBOutlet weak var dataPicker: UIPickerView! {
 		didSet {
-			datePicker.minimumDate = minimumDate
-			datePicker.maximumDate = maximumDate
-			datePicker.date = currentDate ?? Date()
+			dataPicker.tintColor = dataPickerTintColor ?? mainColor
+			dataPicker.backgroundColor = dataPickerBackgroundColor ?? mainColor
+			dataPicker.reloadAllComponents()
 		}
 	}
-	
+
 	// MARK: - Properties
-	
-	/// The maximum date of the date picker
-	public var maximumDate: Date? {
+	public var data: [String] = [] {
 		didSet {
-			if let maximumDate = maximumDate, let minimumDate = minimumDate {
-				if maximumDate.isLess(than: minimumDate) {
-					self.maximumDate = oldValue
-				} else {
-					if datePicker != nil {
-						datePicker.maximumDate = maximumDate
-					}
-				}
-			}
-		}
-	}
-	
-	/// The minimum date of the date picker
-	public var minimumDate: Date? {
-		didSet {
-			if let minimumDate = minimumDate, let maximumDate = maximumDate {
-				if minimumDate.isGreater(than: maximumDate) {
-					self.minimumDate = oldValue
-				} else {
-					if datePicker != nil {
-						datePicker.minimumDate = minimumDate
-					}
-				}
-			}
-		}
-	}
-	
-	/// The current date of the date picker
-	/// This property is used to set date before showing date picker VC
-	/// DO NOT pick date using this property. Use the delegate
-	public var currentDate: Date? {
-		didSet {
-			if let currentDate = currentDate, let minimumDate = minimumDate, let maximumDate = maximumDate {
-				if !currentDate.isGreaterOrEqual(than: minimumDate) && !currentDate.isLessOrEqual(than: maximumDate) {
-					self.currentDate = oldValue
-				} else {
-					if datePicker != nil {
-						datePicker.date = currentDate
-					}
-				}
+			if dataPicker != nil {
+				dataPicker.reloadAllComponents()
 			}
 		}
 	}
@@ -139,7 +98,7 @@ public class DatePickerViewController: UIViewController {
 	
 	/// The color of the border of the date picker VC
 	public var pickerBorderColor: UIColor?
-
+	
 	/// The color of the separator on the bottom of the date picker
 	public var downSeparatorColor: UIColor?
 	
@@ -153,7 +112,13 @@ public class DatePickerViewController: UIViewController {
 	public var cancelButtonColor: UIColor?
 	
 	/// The color of the text in the date picker
-	public var datePickerTextColor: UIColor?
+	public var dataPickerTextColor: UIColor?
+	
+	/// Tint color of the data picker
+	public var dataPickerTintColor: UIColor? = .clear
+	
+	/// Background color of the data picker
+	public var dataPickerBackgroundColor: UIColor? = .clear
 	
 	/// The border width of the picker backround view
 	public var pickerBorderWidth: CGFloat = 1.0
@@ -162,7 +127,7 @@ public class DatePickerViewController: UIViewController {
 	public var pickerCornerRadius: CGFloat = 10.0
 	
 	/// The delegate of the date picker VC
-	public var delegate: DatePickerDelegate?
+	public var delegate: CustomDataPickerDelegate?
 	
 	// MARK: - Init
 	public init() {
@@ -183,11 +148,13 @@ public class DatePickerViewController: UIViewController {
 		
 		let emptyGestureRecogniser = UITapGestureRecognizer(target: nil, action: nil)
 		background.addGestureRecognizer(emptyGestureRecogniser)
+		
+		dataPicker.reloadAllComponents()
 	}
 	
 	// MARK: - Actions
 	@IBAction func onConfirmTouchUpInside(_ sender: UIButton) {
-		delegate?.datePicker(self, didSelectDate: datePicker.date)
+		delegate?.dataPicker(self, didSelectData: data[dataPicker.selectedRow(inComponent: 0)])
 		dismiss()
 	}
 	
@@ -201,9 +168,26 @@ public class DatePickerViewController: UIViewController {
 	}
 	
 	private func dismiss() {
-		delegate?.datePickerWillDismissViewController?(self)
+		delegate?.dataPickerWillDismissViewController?(self)
 		dismiss(animated: true) {
-			self.delegate?.datePickerDidDismissViewController?(self)
+			self.delegate?.dataPickerDidDismissViewController?(self)
 		}
+	}
+}
+
+extension CustomDataPickerViewController: UIPickerViewDelegate {
+	public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+		let attributes = [NSForegroundColorAttributeName: dataPickerTextColor ?? mainColor]
+		return NSAttributedString(string: data[row], attributes: attributes)
+	}
+}
+
+extension CustomDataPickerViewController: UIPickerViewDataSource {
+	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return data.count
 	}
 }

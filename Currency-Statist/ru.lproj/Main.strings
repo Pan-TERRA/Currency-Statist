@@ -10,3 +10,6 @@
 
 /* Class = "UILabel"; text = "Finish Date"; ObjectID = "hdm-JB-jzP"; */
 "hdm-JB-jzP.text" = "Конечная дата";
+
+/* Class =  "UITableViewSection"; headerTitle = "Base Currency"; ObjectID = "MHI-bf-VWG"; */
+"MHI-bf-VWG.text" = "Базовая валюта";

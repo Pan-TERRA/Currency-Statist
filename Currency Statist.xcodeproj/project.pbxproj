@@ -38,6 +38,9 @@
 		A84538A11E5DA5AA00187362 /* ChameleonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */; };
 		A84538A21E5DA5AA00187362 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */; };
 		A84538C91E5DC79600187362 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84538C71E5DC79600187362 /* DatePickerViewController.swift */; };
+		A89397E81E82D7A800C1D451 /* Swift+CurrencyStatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89397E71E82D7A800C1D451 /* Swift+CurrencyStatist.swift */; };
+		A89BE3F21E8A544F0008F013 /* CustomDataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89BE3F01E8A544F0008F013 /* CustomDataPickerViewController.swift */; };
+		A89BE3F71E8A58CF0008F013 /* CustomDataPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A89BE3F91E8A58CF0008F013 /* CustomDataPickerViewController.xib */; };
 		A8D619F31E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */; };
 		A8D619F51E5D9C33003472EC /* UIKit+CurrencyStatist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D619F41E5D9C33003472EC /* UIKit+CurrencyStatist.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,11 @@
 		A845389F1E5DA5AA00187362 /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/Currency-Statist-flqsxkihvmjwniecfdlbnclykkqu/Build/Products/Debug-iphoneos/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
 		A84538A01E5DA5AA00187362 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../Library/Developer/Xcode/DerivedData/Currency-Statist-flqsxkihvmjwniecfdlbnclykkqu/Build/Products/Debug-iphoneos/SwiftyUserDefaults/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
 		A84538C71E5DC79600187362 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		A89397E71E82D7A800C1D451 /* Swift+CurrencyStatist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Swift+CurrencyStatist.swift"; sourceTree = "<group>"; };
+		A89BE3F01E8A544F0008F013 /* CustomDataPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDataPickerViewController.swift; sourceTree = "<group>"; };
+		A89BE4031E8A58E60008F013 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomDataPickerViewController.xib; sourceTree = "<group>"; };
+		A89BE4041E8A58F70008F013 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CustomDataPickerViewController.strings; sourceTree = "<group>"; };
+		A89BE4051E8A58FA0008F013 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/CustomDataPickerViewController.strings; sourceTree = "<group>"; };
 		A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+CurencyStatist.swift"; sourceTree = "<group>"; };
 		A8D619F41E5D9C33003472EC /* UIKit+CurrencyStatist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+CurrencyStatist.swift"; sourceTree = "<group>"; };
 		B966DBC5DC2D9B00B258D922 /* Pods-Currency-Statist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency-Statist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Currency-Statist/Pods-Currency-Statist.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,7 +185,7 @@
 		A81A36BD1E59D35C00EDC8CA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A87571E61E5CA6BB0079EE7E /* DatePickerViewController */,
+				A87571E61E5CA6BB0079EE7E /* DataPickerViewController */,
 				A81A36D41E59D8B500EDC8CA /* PageController */,
 				A81A36BF1E59D38000EDC8CA /* UI */,
 				413A23DA1E59F2BF0097B0BC /* Model */,
@@ -222,13 +230,23 @@
 			path = PageController;
 			sourceTree = "<group>";
 		};
-		A87571E61E5CA6BB0079EE7E /* DatePickerViewController */ = {
+		A87571E61E5CA6BB0079EE7E /* DataPickerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A89BE3F41E8A55410008F013 /* XIB */,
 				A84538C71E5DC79600187362 /* DatePickerViewController.swift */,
-				A82175CD1E73369000D9E015 /* DatePickerViewController.xib */,
+				A89BE3F01E8A544F0008F013 /* CustomDataPickerViewController.swift */,
 			);
-			name = DatePickerViewController;
+			name = DataPickerViewController;
+			sourceTree = "<group>";
+		};
+		A89BE3F41E8A55410008F013 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				A82175CD1E73369000D9E015 /* DatePickerViewController.xib */,
+				A89BE3F91E8A58CF0008F013 /* CustomDataPickerViewController.xib */,
+			);
+			name = XIB;
 			sourceTree = "<group>";
 		};
 		A8D619F11E5D8BD6003472EC /* Utils */ = {
@@ -238,6 +256,7 @@
 				A8D619F21E5D8BF0003472EC /* UserDefaults+CurencyStatist.swift */,
 				A8D619F41E5D9C33003472EC /* UIKit+CurrencyStatist.swift */,
 				A82175D21E7337E800D9E015 /* Foundation+CurrencyStatist.swift */,
+				A89397E71E82D7A800C1D451 /* Swift+CurrencyStatist.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -320,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A82175C61E7333A100D9E015 /* Localizable.strings in Resources */,
+				A89BE3F71E8A58CF0008F013 /* CustomDataPickerViewController.xib in Resources */,
 				A82175CB1E73369000D9E015 /* DatePickerViewController.xib in Resources */,
 				416AFD3A1E59B45900D2E90C /* LaunchScreen.storyboard in Resources */,
 				416AFD371E59B45900D2E90C /* Assets.xcassets in Resources */,
@@ -387,6 +407,7 @@
 				413A23D61E59DA690097B0BC /* Currency.swift in Sources */,
 				413A23DE1E59F3780097B0BC /* CurrencyPriceSet.swift in Sources */,
 				416AFD301E59B45900D2E90C /* AppDelegate.swift in Sources */,
+				A89BE3F21E8A544F0008F013 /* CustomDataPickerViewController.swift in Sources */,
 				A81A36E01E59D8B500EDC8CA /* MenuCell.swift in Sources */,
 				A84538C91E5DC79600187362 /* DatePickerViewController.swift in Sources */,
 				A81A36E51E59D94100EDC8CA /* SingleCurrencyViewController.swift in Sources */,
@@ -401,6 +422,7 @@
 				A81A36EC1E5A0F8500EDC8CA /* CurrencyType.swift in Sources */,
 				A81A36DF1E59D8B500EDC8CA /* MenuBar.swift in Sources */,
 				A81A36DE1E59D8B500EDC8CA /* MenuBar+ContainerView.swift in Sources */,
+				A89397E81E82D7A800C1D451 /* Swift+CurrencyStatist.swift in Sources */,
 				A81A36EA1E59F17000EDC8CA /* CurrencyMenuCell.swift in Sources */,
 				413A23DC1E59F2EE0097B0BC /* CurrencyPriceEntry.swift in Sources */,
 			);
@@ -447,6 +469,16 @@
 				A82175D11E73369600D9E015 /* uk */,
 			);
 			name = DatePickerViewController.xib;
+			sourceTree = "<group>";
+		};
+		A89BE3F91E8A58CF0008F013 /* CustomDataPickerViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A89BE4031E8A58E60008F013 /* en */,
+				A89BE4041E8A58F70008F013 /* ru */,
+				A89BE4051E8A58FA0008F013 /* uk */,
+			);
+			name = CustomDataPickerViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

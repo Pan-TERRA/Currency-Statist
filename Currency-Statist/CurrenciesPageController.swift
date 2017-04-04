@@ -44,7 +44,13 @@ class CurrenciesPageController: PageController {
 		menuBar.registerClass(CurrencyMenuCell.self)
 		menuBar.frame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 44.0)
 		
-		viewControllers = CurrencyType.types.map { SingleCurrencyViewController(type: $0) }
+		var controllers = [UIViewController]()
+		for type in iterateEnum(CurrencyType.self) {
+			if type.rawValue != Defaults[.baseCurrencyType] {
+				controllers += [SingleCurrencyViewController(type: type)]
+			}
+		}
+		viewControllers = controllers
 		
 		scrollView.isPagingEnabled = false
 		scrollView.isScrollEnabled = false
@@ -109,5 +115,10 @@ extension CurrenciesPageController: SettingsUpdateDelegate {
 			self.finishDate = finishDate
 			self.isDateChanged = true
 		}
+	}
+	
+	func settingsViewController(_ viewController: SettingsViewController, didUpdateBaseCurrencyType newType: CurrencyType) {
+		Defaults[.baseCurrencyType] = newType.rawValue
+		self.isDateChanged = true
 	}
 }
