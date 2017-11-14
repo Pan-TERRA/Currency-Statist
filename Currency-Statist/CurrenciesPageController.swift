@@ -11,7 +11,7 @@ import ChameleonFramework
 import SwiftyUserDefaults
 import PKHUD
 
-class CurrenciesPageController: PageController {
+class CurrenciesPageController: PageController, ErrorHandler {
 	fileprivate let worker = CurrencyWorker()
 	
 	fileprivate var startDate: Date?
@@ -20,11 +20,10 @@ class CurrenciesPageController: PageController {
 	
 	fileprivate var currencies: [Currency]? {
 		didSet {
-			let _ = viewControllers.map { viewController  -> SingleCurrencyViewController in
-				let singleCurrencyVC = viewController as! SingleCurrencyViewController
-				singleCurrencyVC.currency = currencies?.filter { $0.type == singleCurrencyVC.type }.first
-				return singleCurrencyVC
-			}
+            self.viewControllers.forEach {
+                let singleCurrencyController = $0 as? SingleCurrencyViewController
+                singleCurrencyController?.currency = currencies?.first(where: { $0.type == singleCurrencyController?.type})
+            }
 		}
 	}
 	
@@ -87,9 +86,7 @@ class CurrenciesPageController: PageController {
 			worker.fetchExchangeRates(from: startDate, to: finishDate) { currency, error in
 				HUD.hide()
 				if let error = error {
-					let alert = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-					self.present(alert, animated: true, completion: nil)
+					self.handle(error)
 					HUD.flash(.error, delay: 1.0)
 				} else {
 					self.currencies = currency

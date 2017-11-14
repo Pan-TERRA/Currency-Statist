@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
+import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {	

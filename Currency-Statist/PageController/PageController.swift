@@ -24,6 +24,7 @@ open class PageController: UIViewController {
             }
         }
     }
+    
     open var viewControllers: [UIViewController] = [] {
         didSet {
             _reloadData()

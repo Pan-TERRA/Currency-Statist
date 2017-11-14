@@ -10,7 +10,7 @@ import UIKit
 
 open class MenuCell: UIView {
 
-    open let titleLabel = UILabel(frame: CGRect.zero)
+    open let titleLabel = UILabel(frame: CGRect.zero)    
     /**
 
     Margins between cells are zero, because it is difficult that calculating distance of scrolling. If you change margins between cell's labels, use constentInset.

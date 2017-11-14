@@ -6,26 +6,28 @@
 //  Copyright © 2017 Vlad Krut. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-extension Date {
-	func isGreater(than dateToCompare: Date) -> Bool {
-		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) == .orderedDescending
+extension UIAlertController {
+	public convenience init(error: Error) {
+		self.init(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, preferredStyle: .alert)
+		addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
 	}
-	
-	func isLess(than dateToCompare: Date) -> Bool {
-		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) == .orderedAscending
+}
+
+protocol ErrorHandler: class {
+	func handle(_ error: Error)
+}
+
+extension ErrorHandler where Self: NSObject {
+	func handle(_ error: Error) {
+		print(error.localizedDescription)
 	}
-	
-	func isGreaterOrEqual(than dateToCompare: Date) -> Bool {
-		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) != .orderedAscending
-	}
-	
-	func isLessOrEqual(than dateToCompare: Date) -> Bool {
-		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) != .orderedDescending
-	}
-	
-	func isEqual(to dateToCompare: Date) -> Bool {
-		return NSCalendar.current.compare(self, to: dateToCompare, toGranularity: .day) == .orderedSame
+}
+
+extension ErrorHandler where Self: UIViewController {
+	func handle(_ error: Error) {
+		let alert = UIAlertController(error: error)
+		present(alert, animated: true, completion: nil)
 	}
 }
